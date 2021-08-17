@@ -1,0 +1,122 @@
+@charset "UTF-8";
+/*--------------------------------------------------
+    ボックスレイアウト（基本）
+--------------------------------------------------*/
+
+* {
+	-webkit-box-sizing:border-box !important;
+	-moz-box-sizing:border-box !important;
+	box-sizing:border-box !important;
+}
+
+header,main,footer {
+    margin: 0 auto;
+    text-align: center;
+}
+
+section { 
+    margin-top:5em;
+    margin-bottom: 5em;
+}
+
+
+/* PCの場合 */
+@media ( min-width : 768px ) {
+    .pcOnly { display:block; }
+	.spOnly { display:none; }	/* PCでは非表示 */
+    header,main,footer { width:980px; }
+}
+
+/* スマホの場合 */
+@media ( max-width : 767px ) {
+    .pcOnly { display:none; }	/* スマホでは非表示 */
+	.spOnly { display:block; }
+}
+
+/*--------------------------------------------------
+テキスト
+--------------------------------------------------*/
+body {
+    font-family: Helvetica, '游ゴシック', 'Yu Gothic', YuGothic, HiraKakuProN-W3, 'メイリオ', Meiryo, sans-serif;
+    color:#383838;
+}
+
+h2{
+    font-weight: lighter;
+    font-size: 28px;
+    font-family: 'Barlow','Atkinson Hyperlegible', sans-serif;
+}
+
+h3{
+    font-weight: lighter;
+    font-size: 23px;
+    font-family: 'Barlow','Atkinson Hyperlegible', sans-serif;
+}
+
+.title{
+    padding: 5px 0;
+    margin-bottom:2em;
+    border-top: solid 1px #a9a9a9;
+    border-bottom: solid 1px #a9a9a9;
+}
+
+/*--------------------------------------------------
+その他
+--------------------------------------------------*/
+a:hover { cursor:pointer; }
+
+.active{
+    border-bottom: solid 1px gray;
+    color: gray;
+    pointer-events:none;
+}
+
+.top{margin:3em auto;}
+.top-img img{
+    max-height: 200px;
+    max-width:350px;
+}
+.top-title{
+    font-size: 40px;
+    font-weight: lighter;
+    font-family: 'Barlow','Atkinson Hyperlegible', sans-serif;
+    margin: 1em auto;
+    
+}
+.title-marker{
+    background:linear-gradient(transparent 70%, #dcdcdc 0%);
+    padding:0 20px;
+}
+
+/*--------------------------------------------------
+header
+--------------------------------------------------*/
+.header-img img{
+    width:600px;
+}
+
+.header-lists {
+    display: flex;
+    justify-content: space-around;
+    margin-top:2em;
+    font-family: 'Barlow','Atkinson Hyperlegible', sans-serif;
+}
+
+/*--------------------------------------------------
+footer
+--------------------------------------------------*/
+footer{
+    padding-bottom: 1em;
+    border-top: solid 1px gray;
+}
+
+.sns{
+    display: flex;
+    justify-content: space-between;
+    width:200px;
+    margin:1em auto;
+}
+.fab{font-size: 40px;}
+.fa-facebook-square{color:#3B5998 ;}
+.fa-twitter-square{color:#1DA1F2;}
+.fa-line{color:#00B900;}

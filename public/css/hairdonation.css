@@ -1,0 +1,21 @@
+.donation{
+    margin:2em auto;
+    width:450px;
+    text-align: left;
+    text-indent: 1rem;
+} 
+.donation-img{
+    display: flex;
+    flex-direction: row;
+    width:450px;
+    margin:3em auto;
+}
+.donation-img-left,
+.donation-img-right{
+    width:50%;
+}
+.donation-img img{
+    max-height:400px;
+    max-width:90%;
+}
+.donation-title{margin-top: 10px;}

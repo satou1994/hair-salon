@@ -1,0 +1,312 @@
+/*--------------------------------------------------
+    PC
+--------------------------------------------------*/
+@media ( min-width : 768px ) {
+  /* ----------------------------------------------------
+    common
+  -----------------------------------------------------*/
+  * {
+    -webkit-box-sizing:border-box !important;
+    -moz-box-sizing:border-box !important;
+    box-sizing:border-box !important;
+  }
+  
+  header,main,footer {
+    margin: 0 auto;
+    text-align: center;
+    width:100%;
+  }
+  
+  section { 
+    margin-bottom: 4em;
+  }
+  
+  body {
+    font-family: 'Barlow','Atkinson Hyperlegible', sans-serif;
+    color:#383838;
+  }
+
+  h2{
+    font-weight: lighter;
+    font-size: 28px;
+  }
+
+  h3{
+    font-weight: lighter;
+    font-size: 23px;
+  }
+
+  .container{ 
+    max-width:980px;
+    margin: 0 auto
+  }
+
+  /* ----------------------------------------------------
+    header
+  -----------------------------------------------------*/
+  header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* margin:0 auto 1em auto; */
+    padding: 10px;
+  
+    z-index:4;
+    transition: all 300ms ease-in-out;
+    position: fixed;
+    top:0;
+    background-color: white;
+  }
+
+  .header-img{ 
+    font-size: 25px;
+    font-weight: bold;
+    padding-left:20px;
+  }
+  
+  header li{
+    padding:0 10px;
+  }
+  
+  .header-lists {
+    display: flex;
+    align-items: flex-end;
+    vertical-align: bottom;
+    padding-right:10px;
+  }
+
+  /* -------------  animation  ----------------*/
+  .animateIn{
+    transform:translateY(0px);
+  }
+  .animateOut{
+  
+    transform:translateY(-100%);
+  }
+
+  /* ----------------------------------------------------
+    main
+  -----------------------------------------------------*/
+  /* -------------  defoult  ----------------*/
+  body{display: none;}
+
+  p{
+    text-align: left;
+    margin: 1.5em auto;
+  }
+
+  .title{
+    padding: 5px 0;
+    margin-bottom:2em;
+    border-top: solid 1px #a9a9a9;
+    border-bottom: solid 1px #a9a9a9;
+  }
+  
+  /* -------------  top  ----------------*/
+  .top{
+    width:100%;
+    margin-bottom:4em;
+    max-height:820px;
+    overflow: hidden;
+    position:relative;
+  }
+  .top-img img{
+    width:100%;
+  }
+
+  .news{
+    width:600px;
+    height:150px;
+    background-color: white;
+    z-index: 2;
+    position:absolute;
+    top:670px;
+    border-radius: 0 100px 0 0;
+    opacity: 90%;
+  }
+  .news-contents{
+    margin-top: 7px ;
+    margin-left: 30px;
+    text-align: left;
+  }
+  .news-contents h3{
+    margin-left: 10px;
+  }
+  .news-content{
+    width:500px;
+    height:100px;
+    margin-top:6px;
+    border:solid 1px #a9a9a9;
+  }
+  .news-content option{
+    margin: 7px 10px 0 10px ;
+    border-bottom: solid 1px #a9a9a9;
+  }
+  .news-content option:hover{
+    background-color: #f1f1f1;
+    cursor:pointer;
+  }
+
+  /* -------------  about  ----------------*/
+  .about{position: relative;}
+  .about-img{
+    text-align: left;
+    
+  }
+  .about-img img{
+    width:550px;
+    border-radius: 25px 0 25px 0;
+  }
+  .about-background{
+    height:630px;
+    width:80%;
+    border-radius: 0 0 0 400px;
+    background-color: #eceaea;
+    z-index: -2;
+    position:absolute;
+    top:40px;
+    right:0;
+  }
+  
+  .about-comment{
+    float: right;
+    margin:10px 1em 3em 0;
+  }
+  .about:after{
+    content: "";
+    display: block;
+    clear:both;
+  }
+  .about-comment p{
+    text-align: left;
+  }
+
+  /* -------------  store equipment  ----------------*/
+  .store-equipment{
+    display: flex;
+    margin-bottom:3em;
+    width:100%;
+    position: relative;
+  }
+  
+  .store-equipment-img{
+    width:50%;
+    margin-bottom: 1em;
+  }
+  
+  .store-equipment-comment{
+    margin-top: 3em;
+    text-align: left;
+    width:50%;
+  }
+  .store-equipment-comment h3,
+  .store-equipment-comment p{
+    margin-left:100px;
+  }
+  
+  .store-equipment-background{
+    height:265px;
+    width:400px;
+    background-color: #dfdddd;
+    z-index: -2;
+    position:absolute;
+  }
+  
+  .wifi .store-equipment-img img,
+  .kidsSpace .store-equipment-img img{
+    width:400px;
+    border-radius: 25px 0 25px 0;
+  }
+  .wifi .store-equipment-background,
+  .kidsSpace .store-equipment-background{
+    border-radius: 25px 0 25px 0;
+    top:30px;
+    left:70px;
+  }
+  
+  .ipad .store-equipment-img img{
+    height: 270px;
+    width:400px;
+    border-radius: 0 25px 0 25px;
+  }
+  .ipad .store-equipment-background{
+    border-radius: 0 25px 0 25px;
+    top:30px;
+    right:70px;
+  }
+
+  /* -------------  activities  ----------------*/
+  .activities{ 
+    margin-bottom:5em;
+    padding:0 10px ;
+    height:300px;
+    border:solid 1px #a9a9a9;
+    border-radius: 60px ;
+    display:flex;
+    box-shadow: 0 2px 4px #a9a9a9;
+  }
+  
+  .activities-left{width:40%}
+  .activities-right{width:60%;}
+
+  .activities-title{
+    margin:1em 20px;
+    border-bottom: solid 1px #a9a9a9;
+  }
+  .activities-title-small{ font-size: 17px; }
+
+  .activities-img{line-height: 180px;}
+  .activities-img img{ 
+    width:300px;
+  }
+
+  .activities p{margin: 1.5em 2em;}
+  
+  .activities-strong{
+    font-weight: bold;
+    color: red;
+    margin-bottom: 2em;
+  }
+  .marker{ background:linear-gradient(transparent 70%, #FFFF00 0%);}
+
+  /* -------------  map  ----------------*/
+  .map{
+    margin-bottom:2em ;
+  }
+
+  /* ----------------------------------------------------
+    footer
+  -----------------------------------------------------*/
+  footer{
+    padding-bottom: 1em;
+    border-top: solid 1px gray;
+    position:relative;
+  }
+
+  .sns{
+      display: flex;
+      justify-content: space-between;
+      width:200px;
+      margin:1em auto;
+  }
+  .fab{font-size: 40px;}
+  .fa-facebook-square{color:#3B5998 ;}
+  .fa-twitter-square{color:#1DA1F2;}
+  .fa-line{color:#00B900;}
+  
+  .jump{
+    height:40px;
+    width:40px;
+    border:solid 1px #a9a9a9 ;
+    border-radius: 25px;
+    position:absolute;
+    top:15px;
+    right:30px;
+    font-size: 25px;
+  }
+}
+
+/*--------------------------------------------------
+    SP
+--------------------------------------------------*/
+@media ( max-width : 767px ) {}

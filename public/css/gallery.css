@@ -1,0 +1,13 @@
+.gallery{
+    display: flex;
+    flex-wrap:wrap;
+    width:100%;
+}
+.gallery-img{
+    width:30%;
+    margin: 5px;
+}
+.gallery-img img{
+    max-height: 250px;
+    max-width:100%;
+}

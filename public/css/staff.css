@@ -1,0 +1,40 @@
+.profile{
+    display: flex;
+    justify-content: center;
+    width:100%;
+    margin-bottom:10em;
+}
+.progile-left{
+    width:50%;
+}
+.profile-img img{
+    width:250px;
+    border-radius: 25%;
+}
+.profile-post{
+    margin-top:1em;
+}
+.profile-name{
+    margin-top:2px;
+}
+.profile-right{
+    width:50%;
+    padding-left:2em;
+}
+.title{
+    font-weight: lighter;
+    font-size: 17px;
+    margin-bottom: 1em;
+}
+.profile-contents{
+    margin-bottom:2em;
+    text-align: left;
+}
+.profile-contents ul li ul{
+    padding-left:30px;
+}
+.profile-title{
+    margin-bottom: 0.5em;
+    text-align: center;
+    background-color: #dcdcdc;
+}

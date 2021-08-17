@@ -1,0 +1,50 @@
+/*--------------------------------------------------
+PC
+--------------------------------------------------*/
+@media ( min-width : 768px ) {
+    form{
+        width:50%;
+        margin: 0 auto;
+        margin-bottom: 4rem;
+        text-align: left;
+    }
+    .form-group{
+    margin-bottom: 1rem;
+    width:100%;
+    }
+    label{
+    display:block;
+    margin-bottom: 6px;
+    }
+    input{
+    height: 2.5rem;
+    width:300px;
+    }
+    textarea{
+    width:100%;
+    }
+    button{
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 8px 10px;
+    }
+    button:hover{
+    background-color: #d3d3d3;
+    }
+    
+    .error{
+    color:red;
+    }
+
+    .thanks{ 
+        margin: 3em auto;
+        text-align: left;
+        width:600px;
+    }
+
+  }
+  
+  /*--------------------------------------------------
+      SP
+  --------------------------------------------------*/
+  @media ( max-width : 767px ) {}

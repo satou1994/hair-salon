@@ -1,0 +1,12 @@
+.comments{
+    margin:3em auto;
+    width:500px;
+    text-align: left;
+    text-indent: 1rem;
+}
+.name{
+    display: block;
+    margin: 1em auto;
+    text-align: right;
+}
+.comment{margin-bottom: 2em;}

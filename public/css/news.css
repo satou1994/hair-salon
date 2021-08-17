@@ -1,0 +1,21 @@
+.news{
+    margin: 5em auto;
+    width:600px;
+}
+
+.news-title{
+    text-align-last: left;
+    border-bottom: solid 1px #a9a9a9;
+    padding-left: 1em;
+}
+
+.news-contents{
+    text-align:left;
+    margin:1em auto;
+    padding-left: 1em;
+}
+
+.news img{
+    max-height:200px;
+    max-width:200px;
+}

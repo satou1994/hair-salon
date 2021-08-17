@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Web表示設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="秋田市の美容室「ヘアサロンアキ」の店舗情報です。カット・カラー・パーマだけでなく、ヘアドネーションも取り扱っています" />
+    <!-- アイコンの設定-->
+    <!-- <link rel="icon" href="#.ico" />
+    <link rel="apple-touch-icon" href="#.png" /> -->
+    <!-- プラグイン -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital@1&family=Barlow:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <!-- css -->
+    <link rel="stylesheet" href="/css/reset.css">
+    <!-- <link rel="stylesheet" href="./css/common.css"> -->
+    <link rel="stylesheet" href="/css/index.css">
+    
+    <title>hair-salon-aki</title>
+  </head>
+  <body>
+    <header class="banner-wrapper">
+      <div class="header-img"><a href="/">hair salon aki</a></div>
+      <ul class="header-lists">
+        <li class="header-list"><a href="/news">News</a></li>
+        <li class="header-list"><a href="/menu">Menu</a></li>
+        <li class="header-list"><a href="/gallery">Gallery</a></li>
+        <li class="header-list"><a href="/staff">Staff</a></li>
+        <li class="header-list"><a href="/hairdonation">Hair Donation</a></li>
+        <li class="header-list"><a href="/access">Access</a></li>
+        <li class="header-list"><a href="/contact">Contact</a></li>
+      </ul>
+    </header>
+    
+    <main>
+      <div id="top" class="top">
+        <ul class="top-img">
+          <li><img src="https://assets.st-note.com/production/uploads/images/53770224/picture_pc_9de779d0763adbbafe0fa194e7f3599a.jpg?width=800" alt="ホームページトップのスライドショーの画像"></li>
+          <li><img src="https://assets.st-note.com/production/uploads/images/53770283/picture_pc_b79bb505ebdfcc8da6c51b15daedba02.jpg" alt="ホームページトップのスライドショーの画像"></li>
+          <li><img src="https://static.wixstatic.com/media/3254e0_e6f25b6734534676beea65b1c20f51eb~mv2_d_1920_1280_s_2.jpg/v1/fill/w_1920,h_1280,al_c,q_90/3254e0_e6f25b6734534676beea65b1c20f51eb~mv2_d_1920_1280_s_2.webp" alt="ホームページトップのスライドショーの画像"></li>
+        </ul>
+        <div class="news">
+          <div class="news-contents">
+            <h3>- News -</h3>
+            <select class="news-content" multiple onchange="location.href=value;">
+            <% news.forEach((item) => { %>
+              <option value="/news#<%= item.id %>"><%= item.title %></option>
+            <% }); %>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <section>
+        <h2 class="title reveal-back">About us</h2>
+          <div class="container about">
+            <div class="about-img reveal"><img src="https://assets.st-note.com/production/uploads/images/53770537/picture_pc_be2e4ced21e49fd22ea61d41e02d071f.jpg?width=800" title="店頭看板の画像"></div>
+            <div class="about-comment reveal">
+              <p>
+                hair salon aki のHPを閲覧いただき誠にありがとうございます。<br><br>
+                hair salon aki では全てのお客様が心から心地よく思える空間作りと、<br>
+                お客様の心が満たされる技術提供を目指しております。<br><br>
+                お店とお客様というような隔たりを作るのではなく、<br>
+                スタッフとお客様が お互い尊重しあい協力し合うことで,<br>
+                より良い美容室が生まれると信じています。<br><br>
+                hair salon aki を中心とした幸せの輪が造られますように。
+              </p>
+            </div>
+            <div class="about-background reveal-back"></div>
+          </div>
+        </section>
+        
+        <section>
+          <h2 class="title reveal-back">Store Equipment</h2>
+          <div class="container">
+            <div class="store-equipment wifi">
+              <div class="store-equipment-img reveal">
+                <img src="https://static.wixstatic.com/media/3254e0_a5c5b6e8ec954bd09a39ca81eabc271b~mv2_d_1920_1280_s_2.jpg/v1/fill/w_1920,h_1280,al_c,q_90/3254e0_a5c5b6e8ec954bd09a39ca81eabc271b~mv2_d_1920_1280_s_2.webp" title="wifiの画像">
+              </div>
+              <div class="store-equipment-background reveal-back"></div>
+              <div class="store-equipment-comment reveal">
+                <h3>Wi-Fi</h3>
+                <P>
+                  ご自由にご利用いただける<br>
+                  Wi-Fi環境をご用意しております
+                </p>
+              </div>
+            </div>
+
+            <div class="store-equipment ipad">
+              <div class="store-equipment-comment reveal">
+                <h3>iPad</h3>
+                <p>
+                  カット中やカラー・パーマの待ち時間でも、<br>
+                  動画や雑誌をご覧いただけます
+                </p>
+              </div>
+              <div class="store-equipment-img reveal">
+                <img src="https://static.wixstatic.com/media/3254e0_ee70e668f53742829cdb076071a218ab~mv2_d_4032_3024_s_4_2.jpg/v1/fill/w_1770,h_1328,al_c,q_90,usm_0.66_1.00_0.01/3254e0_ee70e668f53742829cdb076071a218ab~mv2_d_4032_3024_s_4_2.webp" title="ipadの画像">
+              </div>
+              <div class="store-equipment-background reveal-back"></div>
+            </div>
+
+            <div class="store-equipment kidsSpace">
+              <div class="store-equipment-img reveal">
+                <img src="https://static.wixstatic.com/media/3254e0_a42681bbdcc4433299981121d7d8afe6~mv2_d_1920_1280_s_2.jpg/v1/fill/w_1920,h_1280,al_c,q_90/3254e0_a42681bbdcc4433299981121d7d8afe6~mv2_d_1920_1280_s_2.webp" title="キッズスペースの画像">
+              </div>
+              <div class="store-equipment-background reveal-back"></div>
+              <div class="store-equipment-comment reveal">
+                <h3>Kids Space</h3>
+                <p>
+                  お子様にも待ち時間を<br>
+                  楽しく過ごしていただけるよう<br>
+                  キッズスペースをご用意しております
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section>
+          <h2 class="title reveal-back">Activities</h2>
+          <div class="container">
+            <div class="activities reveal">
+              <div class="activities-left">
+                <div class="activities-img"><a href="https://www.jhdac.org/index.html" target="_blank" rel="noopener noreferrer"><img src="https://static.wixstatic.com/media/3254e0_e14386207b874ba0a00e19e1a6aef7d9~mv2.jpg/v1/fill/w_368,h_110,al_c,q_80,usm_0.66_1.00_0.01/3254e0_e14386207b874ba0a00e19e1a6aef7d9~mv2.webp" title="ヘアドネーションロゴ"></a></div>
+              </div>
+              <div class="activities-right">
+                <h3 class="activities-title">ヘアドネーション賛同美容室</h3>
+                <p>
+                  ヘアドネーションとは老若男女・国籍年齢問わず、気軽に参加して頂ける髪の毛のボランティアです。<br><br>
+                  NPO法人 Japan Hair Donation & Charity（通称 JHDAC ; ジャーダック）は、『ヘアドネーション』によって、１００％寄付された髪の毛で作った『フルオーダーメイドの医療用ウィッグ』を、頭髪の悩みを持つ１８歳以下の子供たちに無償でプレゼントしている日本で唯一の特定非営利活動法人です。
+                </p>
+              </div>
+            </div>
+            
+            <div class="activities reveal">
+              <div class="activities-left">
+                <div class="activities-img"><a href="http://www.unicef.or.jp/" target="_blank" rel="noopener noreferrer"><img src="https://static.wixstatic.com/media/3254e0_27c3126f9aac4aa7a48c813c699f8a94~mv2.png/v1/fill/w_372,h_110,al_c,q_85,usm_0.66_1.00_0.01/3254e0_27c3126f9aac4aa7a48c813c699f8a94~mv2.webp" title="ユニセフのロゴ"></a></div>
+              </div>
+              <div class="activities-right">
+                <h3 class="activities-title">ユニセフ募金</h3>
+                <p>
+                  hair salon akiでは世界の子供たちの健康と成長に、<br>
+                  少しでも力になれるように募金箱を設置しています。
+                </p>
+              </div>
+            </div>
+            
+            <div class="activities reveal">
+              <div class="activities-left">
+                <div class="activities-img"><a href="https://workpal.zenpuku.or.jp/" target="_blank" rel="noopener noreferrer"><img src="https://static.wixstatic.com/media/3254e0_ce75c9d4ef264de88daf3f5b9143fe9b~mv2.png/v1/fill/w_496,h_84,al_c,q_85,usm_0.66_1.00_0.01/561398A0-254B-4907-A46B-B196C874EA93-923.webp" title="ワークパルのロゴ"></a></div>
+              </div>
+              <div class="activities-right">
+                <h3 class="activities-title">ワークパル<br><span class="activities-title-small">（一般社団法人秋田市労働者福祉振興協会）</span></h3>
+                <p>
+                  「ワークパル」は秋田市の事業所で働く方々の労働福祉向上と振興を目的として開設。<br>
+                  福利厚生事業について、自治体の支援のもと中小企業の事業主とその勤労者があい協力して設立する、総合的な勤労者福祉事業を行う団体です。<br>
+                </p>
+                <div class="activities-strong"><span class="marker">※ 加入者 技術費 10%off</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+      <section>
+        <h2 class="title reveal-back">Access</h2>
+        <div class="map reveal">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3069.109805929633!2d140.10702716537463!3d39.71471492945295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z56eL55Sw55yM56eL55Sw5biC5pet6Yym55S6NC01OCDjg4njg7Pjg7vjgq3jg5vjg7zjg4YyRg!5e0!3m2!1sja!2sjp!4v1628214389635!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="address reveal">
+          <ul class="address-lists">
+            <li class="address-list">〒010-0923</li>
+            <li class="address-list">秋田県秋田市旭錦町4-58 ドン・キホーテ2F</li>
+            <li class="address-list">Tel：018-862-6115</li>
+            <li class="address-list">Email：hairsalon.aki@gmail.com</li>
+            <li class="address-list">営業時間：10:00 〜 20:00</li>
+            <li class="address-list">店休日：年末年始、不定期（<a href="/news">News</a>情報をご確認下さい）</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="reveal-back">
+      <div class="sns">
+        <a href="#"><i class="fab fa-facebook-square"></i></a>
+        <a href="#"><i class="fab fa-twitter-square"></i></a>
+        <a href="#"><i class="fab fa-line"></i></a>
+      </div>
+      <small>&copy;hair-salon-aki</small>
+      <div class="jump"><a href="#top">↑</a></div>
+    </footer>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/style.js"></script>
+  </body>
+</html>
