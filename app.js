@@ -11,11 +11,10 @@ app.use(express.static('public'));
 // -----------------------------------------------
 const connection = new Client({
   connectionString: process.env.DATABASE_URL,
-  ssl:true,
-  // ssl: {
-  //     sslmode:'require',
-  //     rejectUnauthorized:false
-  // }
+  ssl: {
+      sslmode:'require',
+      rejectUnauthorized:false
+  }
 });
   // const connection = new Client({
   // host : process.env.HOST,
