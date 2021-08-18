@@ -1,18 +1,18 @@
 const express = require('express');
-const { Client } = require('pg');
+// const { Client } = require('pg');
 const app = express();
 
-require('dotenv').config({debug:true});
+// require('dotenv').config({debug:true});
 
 app.use(express.static('public'));
 
 // -----------------------------------------------
 //      herokuアプリからpostgresに接続する設定
 // -----------------------------------------------
-const connection = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
+// const connection = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: true,
+// });
 // const connection = new Client({
 //   host : process.env.HOST,
 //   database : process.env.DATABASE,
@@ -26,13 +26,13 @@ const connection = new Client({
 // });
 
 // --------  mysql接続エラーの表示設定  -----------
-connection.connect((err) => {
+// connection.connect((err) => {
   // if(err){
   //     console.log('error connecting:' + err.stack);
   //     return;
   // }
   // console.log('success');
-});
+// });
 
 
 // -----------------------------------------------
@@ -40,13 +40,14 @@ connection.connect((err) => {
 // -----------------------------------------------
 // --------  get  -----------
 app.get('/', (req, res) => {
-  connection.query(
-      'SELECT * FROM news',
-      (error,result) => {
-          if(error) throw err;
-          res.render('index.ejs',{news:result.rows});
-      }
-  );
+  // connection.query(
+  //     'SELECT * FROM news',
+  //     (error,result) => {
+  //         if(error) throw err;
+  //         res.render('index.ejs',{news:result.rows});
+  //     }
+  // );
+  res.render('index.ejs');
 });
 
 
