@@ -48,7 +48,9 @@
           <div class="news-contents">
             <h3>- News -</h3>
             <select class="news-content" multiple onchange="location.href=value;">
-
+              <% news.forEach((item) => { %>
+                <option value="/news#<%= item.id %>"><%= item.title %></option>
+              <% }); %>
             </select>
           </div>
         </div>
