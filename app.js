@@ -10,7 +10,7 @@ app.use(express.static('public'));
 // --------  getter  -----------
 app.get('/', (req, res) => {
   connection.query(
-    'SELECT * FROM news',
+    'SELECT * FROM news ORDER BY id DESC',
     (error,result) => {
       if(error) throw err;
       res.render('index.ejs',{news:result.rows});
@@ -20,10 +20,10 @@ app.get('/', (req, res) => {
 
 app.get('/news', (req, res) => {
   connection.query(
-      'SELECT * FROM news order by id desc',
-      (error,result) => {
-          res.render('news.ejs',{news:comRep(result.rows)});
-      }
+    'SELECT * FROM news ORDER BY id DESC',
+    (error,result) => {
+      res.render('news.ejs',{news:comRep(result.rows)});
+    }
   );
 });
 
@@ -33,10 +33,10 @@ app.get('/menu', (req, res) => {
 
 app.get('/gallery', (req, res) => {
   connection.query(
-      'SELECT * FROM gallery ORDER BY last_update DESC',
-      (error,result) => {
-          res.render('gallery.ejs',{gallery:result.rows});
-      }
+    'SELECT * FROM gallery ORDER BY last_update DESC',
+    (error,result) => {
+      res.render('gallery.ejs',{gallery:result.rows});
+    }
   );
 });
 
@@ -102,9 +102,9 @@ app.listen(port);
 //      オリジナル
 // -----------------------------------------------
 // --------  db → html変換  -----------
-const comRep = (results) => {
+var comRep = (results) => {
   results.forEach(result => {
-      result.comment = result.comment.replace(/\r\n/g,'<br>');
+      result.comment = result.comment.replace(/\r\n/g , '<br>');
       
       if(result.image){
           result.image = "<img src=\"" + result.image + "\" alt=\"ニュースの画像\">"; 
