@@ -10,24 +10,28 @@ app.use(express.static('public'));
 //      herokuアプリからpostgresに接続する設定
 // -----------------------------------------------
 const connection = new Client({
-  host : process.env.HOST,
-  database : process.env.DATABASE,
-  user : process.env.ENV_USER,
-  posrt: 5432,
-  password : process.env.PASSWORD,
-  ssl: {
-      sslmode:'require',
-      rejectUnauthorized:false
-  }
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
 });
+// const connection = new Client({
+//   host : process.env.HOST,
+//   database : process.env.DATABASE,
+//   user : process.env.ENV_USER,
+//   posrt: 5432,
+//   password : process.env.PASSWORD,
+//   ssl: {
+//       sslmode:'require',
+//       rejectUnauthorized:false
+//   }
+// });
 
 // --------  mysql接続エラーの表示設定  -----------
 connection.connect((err) => {
-  if(err){
-      console.log('error connecting:' + err.stack);
-      return;
-  }
-  console.log('success');
+  // if(err){
+  //     console.log('error connecting:' + err.stack);
+  //     return;
+  // }
+  // console.log('success');
 });
 
 
@@ -46,4 +50,4 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(3000);
+// app.listen(3000);
