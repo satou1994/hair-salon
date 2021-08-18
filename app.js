@@ -11,19 +11,22 @@ app.use(express.static('public'));
 // -----------------------------------------------
 const connection = new Client({
   connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
-const connection = new Client({
-  host : process.env.HOST,
-  database : process.env.DATABASE,
-  user : process.env.ENV_USER,
-  posrt: 5432,
-  password : process.env.PASSWORD,
   ssl: {
       sslmode:'require',
       rejectUnauthorized:false
   }
 });
+  // const connection = new Client({
+  // host : process.env.HOST,
+  // database : process.env.DATABASE,
+  // user : process.env.ENV_USER,
+  // posrt: 5432,
+  // password : process.env.PASSWORD,
+//   ssl: {
+//       sslmode:'require',
+//       rejectUnauthorized:false
+//   }
+// });
 
 // --------  mysql接続エラーの表示設定  -----------
 connection.connect((err) => {
