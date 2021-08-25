@@ -1,40 +1,85 @@
-.profile{
-    display: flex;
-    justify-content: center;
-    width:100%;
-    margin-bottom:10em;
+/**************************************************
+    SP
+***************************************************/
+@media ( max-width : 767px ) {
+    .profile{
+        margin-bottom:20vh;
+    }
+    .profile-left{
+        margin-bottom: 3vh;
+    }
+    .profile-img img{
+        width:60%;
+        border-radius: 50%;
+    }
+    .profile-post{
+        margin-top:1vh;
+    }
+    .profile-name{
+        margin-top:1vh;
+    }
+    .title{
+        font-weight: lighter;
+        font-size: 17px;
+        margin-bottom: 1vh;
+    }
+    .profile-contents{
+        width:95%;
+        margin: 2vh auto 4vh auto;
+        text-align: left;
+    }
+    .profile-contents ul li ul{
+        padding-left:5%;
+    }
+    .profile-title{
+        margin-bottom: 1vh;
+        text-align: center;
+        background-color: #dcdcdc;
+    }
 }
-.progile-left{
-    width:50%;
-}
-.profile-img img{
-    width:250px;
-    border-radius: 25%;
-}
-.profile-post{
-    margin-top:1em;
-}
-.profile-name{
-    margin-top:2px;
-}
-.profile-right{
-    width:50%;
-    padding-left:2em;
-}
-.title{
-    font-weight: lighter;
-    font-size: 17px;
-    margin-bottom: 1em;
-}
-.profile-contents{
-    margin-bottom:2em;
-    text-align: left;
-}
-.profile-contents ul li ul{
-    padding-left:30px;
-}
-.profile-title{
-    margin-bottom: 0.5em;
-    text-align: center;
-    background-color: #dcdcdc;
+
+/**************************************************
+    PC
+***************************************************/
+@media ( min-width : 768px ) {
+    .profile{
+        display: flex;
+        justify-content: center;
+        width:100%;
+        margin-bottom:10em;
+    }
+    .profile-left{
+        width:50%;
+    }
+    .profile-img img{
+        width:250px;
+        border-radius: 25%;
+    }
+    .profile-post{
+        margin-top:1em;
+    }
+    .profile-name{
+        margin-top:2px;
+    }
+    .profile-right{
+        width:50%;
+        padding-left:2em;
+    }
+    .title{
+        font-weight: lighter;
+        font-size: 17px;
+        margin-bottom: 1em;
+    }
+    .profile-contents{
+        margin-bottom:2em;
+        text-align: left;
+    }
+    .profile-contents ul li ul{
+        padding-left:30px;
+    }
+    .profile-title{
+        margin-bottom: 0.5em;
+        text-align: center;
+        background-color: #dcdcdc;
+    }
 }

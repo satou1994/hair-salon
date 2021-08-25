@@ -2,7 +2,6 @@
 /*--------------------------------------------------
     ボックスレイアウト（基本）
 --------------------------------------------------*/
-
 * {
 	-webkit-box-sizing:border-box !important;
 	-moz-box-sizing:border-box !important;
@@ -12,6 +11,7 @@
 header,main,footer {
     margin: 0 auto;
     text-align: center;
+    width:100%;
 }
 
 section { 
@@ -19,25 +19,11 @@ section {
     margin-bottom: 5em;
 }
 
-
-/* PCの場合 */
-@media ( min-width : 768px ) {
-    .pcOnly { display:block; }
-	.spOnly { display:none; }	/* PCでは非表示 */
-    header,main,footer { width:980px; }
-}
-
-/* スマホの場合 */
-@media ( max-width : 767px ) {
-    .pcOnly { display:none; }	/* スマホでは非表示 */
-	.spOnly { display:block; }
-}
-
 /*--------------------------------------------------
-テキスト
+    テキスト
 --------------------------------------------------*/
 body {
-    font-family: Helvetica, '游ゴシック', 'Yu Gothic', YuGothic, HiraKakuProN-W3, 'メイリオ', Meiryo, sans-serif;
+    font-family: 'Barlow','Atkinson Hyperlegible', sans-serif;
     color:#383838;
 }
 
@@ -61,7 +47,7 @@ h3{
 }
 
 /*--------------------------------------------------
-その他
+    その他
 --------------------------------------------------*/
 a:hover { cursor:pointer; }
 
@@ -89,21 +75,7 @@ a:hover { cursor:pointer; }
 }
 
 /*--------------------------------------------------
-header
---------------------------------------------------*/
-.header-img img{
-    width:600px;
-}
-
-.header-lists {
-    display: flex;
-    justify-content: space-around;
-    margin-top:2em;
-    font-family: 'Barlow','Atkinson Hyperlegible', sans-serif;
-}
-
-/*--------------------------------------------------
-footer
+    footer
 --------------------------------------------------*/
 footer{
     padding-bottom: 1em;
@@ -120,3 +92,110 @@ footer{
 .fa-facebook-square{color:#3B5998 ;}
 .fa-twitter-square{color:#1DA1F2;}
 .fa-line{color:#00B900;}
+
+
+/**************************************************
+    SP
+***************************************************/
+@media ( max-width : 767px ) {
+    .pcOnly { display:none; }	/* スマホでは非表示 */
+	.spOnly { display:block; }
+    main{ width:98%;}
+
+    /* ----------------------------------------------------
+        header
+    -----------------------------------------------------*/
+    header{
+        height:55px;
+        display: flex;
+        position:relative;
+        font-family: 'Barlow','Atkinson Hyperlegible', sans-serif;
+    }
+
+    .header-img{ 
+        line-height: 55px;
+    }
+    .header-img img{
+        width:150px;
+        
+    }
+
+    .header-lists {
+        display: flex;
+        flex-direction: column;
+        height:120%;
+        width:100%;
+        padding-top: 40px;
+        color:white;
+        font-size: 24px;
+        background-color:#a9a9a9;
+        position:fixed;
+        top:-150vh;
+        z-index:20;
+        opacity: 1;
+        transition: all .6s;
+    }
+
+    .header-list{
+        padding: 20px 0;
+    }
+
+    /* -------------  ハンバーガーボタンの実装  ----------------*/
+    .hamburger_line{
+        width:25px;
+        height:1px;
+        background-color:black;
+        position:fixed;
+        top:0;
+        right:20px;
+        z-index:30;
+        transition: all .6s;
+    }
+    .hamburger_line1{ top:20px;}
+    .hamburger_line2{ top:26px;}
+    .hamburger_line3{ top:32px;}
+
+    /* -------------  ハンバーガークリック時の動作  ----------------*/
+    .nav-open .header-lists{
+        top:0;
+        opacity: 1;
+    }
+
+    .nav-open .hamburger_line1{
+        background-color:white;
+        transform: rotate(45deg);
+        top:25px;
+    }
+    .nav-open .hamburger_line2{
+        background-color:white;
+        width:0;
+
+    }
+    .nav-open .hamburger_line3{
+        background-color:white;
+        transform: rotate(-45deg);
+        top:25px;
+    }
+}
+
+/**************************************************
+    PC
+***************************************************/
+@media ( min-width : 768px ) {
+    .pcOnly { display:block; }
+	.spOnly { display:none; }	/* PCでは非表示 */
+    header,main,footer { width:980px; }
+    /*--------------------------------------------------
+        header
+    --------------------------------------------------*/
+    .header-img img{
+        width:600px;
+    }
+    
+    .header-lists {
+        display: flex;
+        justify-content: space-around;
+        margin-top:2em;
+        font-family: 'Barlow','Atkinson Hyperlegible', sans-serif;
+    }
+}

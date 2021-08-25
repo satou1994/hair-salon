@@ -1,12 +1,34 @@
-.comments{
-    margin:3em auto;
-    width:500px;
-    text-align: left;
-    text-indent: 1rem;
+/**************************************************
+    SP
+***************************************************/
+@media ( max-width : 767px ) {
+    .comments{
+        margin:5vh auto;
+        width:95%;
+        text-align: left;
+    }
+    .name{
+        display: block;
+        margin: 1vh auto;
+        text-align: right;
+    }
+    .comment{margin-bottom: 4vh;}
 }
-.name{
-    display: block;
-    margin: 1em auto;
-    text-align: right;
+
+/**************************************************
+    PC
+***************************************************/
+@media ( min-width : 768px ) {
+    .comments{
+        margin:3em auto;
+        width:500px;
+        text-align: left;
+        text-indent: 1rem;
+    }
+    .name{
+        display: block;
+        margin: 1em auto;
+        text-align: right;
+    }
+    .comment{margin-bottom: 2em;}
 }
-.comment{margin-bottom: 2em;}

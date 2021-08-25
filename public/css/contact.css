@@ -1,6 +1,52 @@
-/*--------------------------------------------------
-PC
---------------------------------------------------*/
+/**************************************************
+    SP
+***************************************************/
+@media ( max-width : 767px ) {
+    .top-img img{ width:50%;}
+    form{
+        width:90%;
+        margin: 0 auto;
+        margin-bottom: 10vh;
+        text-align: left;
+    }
+    .form-group{
+        margin-bottom: 3vh;
+        width:100%;
+    }
+    label{
+        display:block;
+        margin-bottom: 1vh;
+    }
+    input{
+        height: 5vh;
+        width:60%;
+    }
+    textarea{
+        width:100%;
+    }
+    button{
+        border: solid 1px black;
+        border-radius: 5px;
+        padding: 2vh 3vh;
+    }
+    button:hover{
+        background-color: #d3d3d3;
+    }
+    
+    .error{
+        color:red;
+    }
+
+    .thanks{ 
+        margin: 3em auto;
+        text-align: left;
+        width:80%;
+    }
+}
+
+/**************************************************
+    PC
+***************************************************/
 @media ( min-width : 768px ) {
     form{
         width:50%;
@@ -44,7 +90,3 @@ PC
 
   }
   
-  /*--------------------------------------------------
-      SP
-  --------------------------------------------------*/
-  @media ( max-width : 767px ) {}

@@ -1,13 +1,35 @@
-.gallery{
-    display: flex;
-    flex-wrap:wrap;
-    width:100%;
+/**************************************************
+    SP
+***************************************************/
+@media ( max-width : 767px ) {
+    .gallery{
+        display: flex;
+        flex-direction: column;
+    }
+    .gallery-img{
+        margin: 1vh auto;
+    }
+    .gallery-img img{
+        width:100%;
+    }
+
 }
-.gallery-img{
-    width:30%;
-    margin: 5px;
-}
-.gallery-img img{
-    max-height: 250px;
-    max-width:100%;
+
+/**************************************************
+    PC
+***************************************************/
+@media ( min-width : 768px ) {
+    .gallery{
+        display: flex;
+        flex-wrap:wrap;
+        width:100%;
+    }
+    .gallery-img{
+        width:30%;
+        margin: 5px;
+    }
+    .gallery-img img{
+        max-height: 250px;
+        max-width:100%;
+    }
 }

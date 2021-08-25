@@ -36,6 +36,13 @@
         <li class="header-list"><a href="/access">Access</a></li>
         <li class="header-list"><a href="/contact">Contact</a></li>
       </ul>
+
+      <!-- ハンバーガーボタン -->
+      <div class="hamburger_btn spOnly" id="js-hamburger">
+        <span class="hamburger_line hamburger_line1"></span>
+        <span class="hamburger_line hamburger_line2"></span>
+        <span class="hamburger_line hamburger_line3"></span>
+      </div>
     </header>
     
     <main>
@@ -63,12 +70,12 @@
             <div class="about-img reveal"><img src="https://assets.st-note.com/production/uploads/images/53770537/picture_pc_be2e4ced21e49fd22ea61d41e02d071f.jpg?width=800" title="店頭看板の画像"></div>
             <div class="about-comment reveal">
               <p>
-                hair salon aki のHPを閲覧いただき誠にありがとうございます。<br><br>
+                hair salon aki のHPを閲覧いただき誠にありがとうございます。<br><br class="pcOnly">
                 hair salon aki では全てのお客様が心から心地よく思える空間作りと、<br>
-                お客様の心が満たされる技術提供を目指しております。<br><br>
+                お客様の心が満たされる技術提供を目指しております。<br><br class="pcOnly">
                 お店とお客様というような隔たりを作るのではなく、<br>
                 スタッフとお客様が お互い尊重しあい協力し合うことで,<br>
-                より良い美容室が生まれると信じています。<br><br>
+                より良い美容室が生まれると信じています。<br><br class="pcOnly">
                 hair salon aki を中心とした幸せの輪が造られますように。
               </p>
             </div>
@@ -94,17 +101,17 @@
             </div>
 
             <div class="store-equipment ipad">
-              <div class="store-equipment-comment reveal">
-                <h3>iPad</h3>
-                <p>
-                  カット中やカラー・パーマの待ち時間でも、<br>
-                  動画や雑誌をご覧いただけます
-                </p>
-              </div>
               <div class="store-equipment-img reveal">
                 <img src="https://static.wixstatic.com/media/3254e0_ee70e668f53742829cdb076071a218ab~mv2_d_4032_3024_s_4_2.jpg/v1/fill/w_1770,h_1328,al_c,q_90,usm_0.66_1.00_0.01/3254e0_ee70e668f53742829cdb076071a218ab~mv2_d_4032_3024_s_4_2.webp" title="ipadの画像">
               </div>
               <div class="store-equipment-background reveal-back"></div>
+              <div class="store-equipment-comment reveal">
+                <h3>iPad</h3>
+                <p>
+                  カット中やカラー・パーマの待ち時間でも<br>
+                  動画や雑誌をご覧いただけます
+                </p>
+              </div>
             </div>
 
             <div class="store-equipment kidsSpace">
@@ -127,20 +134,20 @@
         <section>
           <h2 class="title reveal-back">Activities</h2>
           <div class="container">
-            <div class="activities reveal">
+            <div class="activities donation reveal">
               <div class="activities-left">
                 <div class="activities-img"><a href="https://www.jhdac.org/index.html" target="_blank" rel="noopener noreferrer"><img src="https://static.wixstatic.com/media/3254e0_e14386207b874ba0a00e19e1a6aef7d9~mv2.jpg/v1/fill/w_368,h_110,al_c,q_80,usm_0.66_1.00_0.01/3254e0_e14386207b874ba0a00e19e1a6aef7d9~mv2.webp" title="ヘアドネーションロゴ"></a></div>
               </div>
               <div class="activities-right">
                 <h3 class="activities-title">ヘアドネーション賛同美容室</h3>
                 <p>
-                  ヘアドネーションとは老若男女・国籍年齢問わず、気軽に参加して頂ける髪の毛のボランティアです。<br><br>
+                  ヘアドネーションとは老若男女・国籍年齢問わず、気軽に参加して頂ける髪の毛のボランティアです。<br><br class="pcOnly">
                   NPO法人 Japan Hair Donation & Charity（通称 JHDAC ; ジャーダック）は、『ヘアドネーション』によって、１００％寄付された髪の毛で作った『フルオーダーメイドの医療用ウィッグ』を、頭髪の悩みを持つ１８歳以下の子供たちに無償でプレゼントしている日本で唯一の特定非営利活動法人です。
                 </p>
               </div>
             </div>
             
-            <div class="activities reveal">
+            <div class="activities unicef reveal">
               <div class="activities-left">
                 <div class="activities-img"><a href="http://www.unicef.or.jp/" target="_blank" rel="noopener noreferrer"><img src="https://static.wixstatic.com/media/3254e0_27c3126f9aac4aa7a48c813c699f8a94~mv2.png/v1/fill/w_372,h_110,al_c,q_85,usm_0.66_1.00_0.01/3254e0_27c3126f9aac4aa7a48c813c699f8a94~mv2.webp" title="ユニセフのロゴ"></a></div>
               </div>
@@ -153,7 +160,7 @@
               </div>
             </div>
             
-            <div class="activities reveal">
+            <div class="activities workpal reveal">
               <div class="activities-left">
                 <div class="activities-img"><a href="https://workpal.zenpuku.or.jp/" target="_blank" rel="noopener noreferrer"><img src="https://static.wixstatic.com/media/3254e0_ce75c9d4ef264de88daf3f5b9143fe9b~mv2.png/v1/fill/w_496,h_84,al_c,q_85,usm_0.66_1.00_0.01/561398A0-254B-4907-A46B-B196C874EA93-923.webp" title="ワークパルのロゴ"></a></div>
               </div>
@@ -194,7 +201,7 @@
         <a href="#"><i class="fab fa-line"></i></a>
       </div>
       <small>&copy;hair-salon-aki</small>
-      <div class="jump"><a href="#top">↑</a></div>
+      <div class="jump pcOnly"><a href="#top">↑</a></div>
     </footer>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

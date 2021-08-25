@@ -1,6 +1,82 @@
-/*--------------------------------------------------
+/**************************************************
+    SP
+***************************************************/
+  @media ( max-width : 767px ) {
+    .title{
+        margin:0 auto;
+        font-size: 25px;
+    }
+
+    table{margin: 1em auto;}
+    th,td{padding: 3px 10px;}
+    .t-head{ text-align: left;}
+    .long-price{padding-top:15px;}
+
+    th{color:#a9a9a9;}
+    .woman{color:#ff69b4;}
+    .man{color:#6495ed;}
+
+    .special-menu{
+        border:solid 2px #df8f55;
+        border-radius: 20px;
+        background-color: #f5be88;
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+    .special-menu-title{color:#ff2600;}
+    .special-menu-title-marke{
+        background:linear-gradient(transparent 70%, #FFFF00 0%);
+        padding:0 20px;
+    }
+
+    .exclusive-title{
+        font-size: 35px;
+        margin: 1em auto;
+        border-bottom: solid 1px #a9a9a9;
+    }
+    .exclusive-contents{
+        margin-bottom: 3em;
+    }
+    .exclusive-contents a{
+        color: #6495ed;
+        text-decoration-line: underline;
+    }
+
+    .discount-contents{
+        width:95%;
+        margin: 1em auto;
+        text-align: left;
+    }
+    .discount-img img{
+        max-height: 200px;
+        max-width:200;
+    }
+    .detail{
+        margin:1em auto;
+        width:100px;
+        padding:5px;
+        border:solid 1px #a9a9a9;
+        border-radius: 25px;
+    }
+    .detail:hover{background-color: #e7e7e7;}
+
+    .discount-title{
+        text-align: center;
+        margin:2em;
+    }
+
+    .red{ color:red;}
+    .strong{
+        display: block;
+        text-align: center;
+        font-weight: bold;
+        padding:3px 0;
+    }
+  }
+
+/**************************************************
     PC
---------------------------------------------------*/
+***************************************************/
 @media ( min-width : 768px ) {
     .title{
         width:400px;
@@ -76,8 +152,3 @@
         padding:3px 0;
     }
   }
-  
-  /*--------------------------------------------------
-      SP
-  --------------------------------------------------*/
-  @media ( max-width : 767px ) {}

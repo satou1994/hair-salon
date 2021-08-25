@@ -1,10 +1,5 @@
 $(function() {
   // ----------------------------------------------------------
-  //   ページ読み込み時にふわっと表示
-  // ----------------------------------------------------------
-  $('body').fadeIn(2000);
-  
-  // ----------------------------------------------------------
   //   スライドショー
   // ----------------------------------------------------------
   $('.top-img').slick({
@@ -41,10 +36,10 @@ $(function() {
   let refOffset = 0;//ユーザーがページスクロールした距離を取得
   const bannerHeight = 50; //ナビゲーションバーの高さ
   const bannerWrapper = document.querySelector('.banner-wrapper');
-
+  
   const handler = () => {
     const newOffset = window.scrollY; //ユーザーのスクロール値取得
-
+    
     if (newOffset > bannerHeight) {
       if (newOffset > refOffset) {
         $(".banner-wrapper").removeClass('animateIn');
@@ -59,6 +54,11 @@ $(function() {
       bannerWrapper.style.backgroundColor = 'rgba(255, 255, 255, 1)';
     }
   };
-
+  
   window.addEventListener('scroll', handler,false);
+  
+  // ----------------------------------------------------------
+  //   ページ読み込み時にふわっと表示
+  // ----------------------------------------------------------
+  $('body').fadeIn(3000);
 });

@@ -33,16 +33,23 @@
           <li class="header-list"><a href="/access">Access</a></li>
           <li class="header-list"><a href="/contact">Contact</a></li>
         </ul>
+
+        <!-- ハンバーガーボタン -->
+        <div class="hamburger_btn spOnly" id="js-hamburger">
+            <span class="hamburger_line hamburger_line1"></span>
+            <span class="hamburger_line hamburger_line2"></span>
+            <span class="hamburger_line hamburger_line3"></span>
+        </div>
     </header>
     
     <main>
-        <div class="top">
+        <div class="top cantainer">
             <div class="top-img"><img src="https://static.wixstatic.com/media/973d92bb376e4585bf38ab50fef16c25.png/v1/fill/w_442,h_442,al_c,q_85,usm_0.66_1.00_0.01/973d92bb376e4585bf38ab50fef16c25.webp" title="メニューページのトップ画像"></div>
             <h1 class="top-title">News</h1>
         </div>
 
         <% news.forEach(item => { %>
-            <article class="news reveal" id="<%= item.id %>">
+            <article class="news container reveal" id="<%= item.id %>">
                 <h2 class="news-title"><%= item.title %></h2>
                 <div class="news-contents">
                     <%- item.comment %>
