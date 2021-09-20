@@ -35,7 +35,7 @@ app.use(
       saveUninitialized: false,
       cookie:{
         httpOnly: true,
-        secure:false, //localだとfalseにしないと、Sessionが保持されない
+        secure:true, //localだとfalseにしないと、Sessionが保持されない
         maxage:1000 * 60 * 10
       }
   })
