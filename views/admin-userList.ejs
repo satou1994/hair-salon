@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <!-- Web表示設定 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- プラグイン -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital@1&family=Barlow:wght@200&display=swap" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/news.css">
+    
+    <title>UserList:hair-salon-aki</title>
+</head>
+<body>
+    <%- include('admin-header'); %> 
+    
+    <main>
+        <div class="top cantainer">
+            <h1 class="top-title">User List</h1>
+        </div>
+
+        <div class="container">
+            <a href="/createUser">新規作成</a>
+        </div>
+
+        <% users.forEach(item => { %>
+            <article class="news container" id="<%= item.id %>">
+                    <a class="news-title-edit" href="/editUser/<%= item.id %>">編集</a>
+                    <h2 class="news-title"><%= item.name %></h2>
+                <div class="news-contents">
+                    <%- item.email %>
+                </div>
+            </article>
+        <% }); %>
+    </main>
+
+    <%- include('admin-footer'); %> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/style.js"></script>
+</html>

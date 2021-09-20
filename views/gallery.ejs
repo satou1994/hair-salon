@@ -22,25 +22,7 @@
         <title>gallery:hair-salon-aki</title>
     </head>
     <body>
-        <header>
-            <div class="header-img"><a href="/"><img src="https://static.wixstatic.com/media/3254e0_9cf6ab1fa35c45a19a9b8f7550c4bfea~mv2_d_2208_1242_s_2.png/v1/fill/w_1200,h_350,al_c,q_90,usm_0.66_1.00_0.01/3254e0_9cf6ab1fa35c45a19a9b8f7550c4bfea~mv2_d_2208_1242_s_2.webp" title="店舗ロゴ"></a></div>
-            <ul class="header-lists">
-            <li class="header-list"><a href="/news">News</a></li>
-            <li class="header-list"><a href="/menu">Menu</a></li>
-            <li class="header-list active"><a href="/gallery">Gallery</a></li>
-            <li class="header-list"><a href="/staff">Staff</a></li>
-            <li class="header-list"><a href="/hairdonation">Hair Donation</a></li>
-            <li class="header-list"><a href="/access">Access</a></li>
-            <li class="header-list"><a href="/contact">Contact</a></li>
-            </ul>
-
-            <!-- ハンバーガーボタン -->
-            <div class="hamburger_btn spOnly" id="js-hamburger">
-                <span class="hamburger_line hamburger_line1"></span>
-                <span class="hamburger_line hamburger_line2"></span>
-                <span class="hamburger_line hamburger_line3"></span>
-            </div>
-        </header>
+        <%- include('header'); %> 
         
         <main>
             <div class="top">
@@ -56,21 +38,7 @@
             </div>
         </main>
 
-        <footer class=" reveal-back">
-            <div class="sns">
-            <a href="#"><i class="fab fa-facebook-square"></i></a>
-            <a href="#"><i class="fab fa-twitter-square"></i></a>
-            <a href="#"><i class="fab fa-line"></i></a>
-            </div>
-            <div class="address">
-            <ul class="address-lists">
-                <li class="address-list">〒010-0923</li>
-                <li class="address-list">秋田県秋田市旭錦町4-58 ドン・キホーテ2F</li>
-                <li class="address-list">Tel：018-862-6115</li>
-                <li class="address-list">Email：hairsalon.aki@gmail.com</li>
-            </ul>
-            </div>
-        </footer>
+        <%- include('footer'); %>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://unpkg.com/scrollreveal"></script>

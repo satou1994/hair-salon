@@ -74,6 +74,22 @@ a:hover { cursor:pointer; }
     padding:0 20px;
 }
 
+/* -------------  admin  ----------------*/
+.admin{
+    width:100%;
+    color: white;
+    background-color: #a9a9a9;
+}
+.return{
+   text-align: left; 
+   margin-bottom: 1em;
+}
+.button{
+    padding: 5px 10px;
+    border:solid 1px #a9a9a9;
+    border-radius: 10px;
+}
+
 /*--------------------------------------------------
     footer
 --------------------------------------------------*/

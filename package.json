@@ -2,7 +2,7 @@
   "name": "hair-salon-aki",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,9 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "googleapis": "^39.2.0",
+    "multer": "^1.4.3",
+    "nodemailer": "^6.6.3",
     "nodemon": "^2.0.12",
     "pg": "^8.7.1"
   }
