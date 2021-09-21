@@ -3,6 +3,7 @@
 // -----------------------------------------------
 const express = require('express');
 const session = require('express-session');
+const pgSession = require('express-pg-session')(session);
 const bcryptjs = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
@@ -35,12 +36,19 @@ app.use(
       saveUninitialized: false,
       cookie:{
         httpOnly: true,
-        secure:true, //localだとfalseにしないと、Sessionが保持されない
-        maxage:1000 * 60 * 10
+        secure:false, //localだとfalseにしないと、Sessionが保持されない
+        maxage:1000 * 60 * 30
       }
-  })
-);
-
+      // store: new pgSession({
+      //   connectionString: process.env.DATABASE_URL,
+      //   ssl: {
+      //     sslmode:'require',
+      //     rejectUnauthorized:false
+      //   }
+      // })
+    })
+    );
+    
 //********** ユーザー管理者用の制御処理 **********
 app.use(
    ['/newsList','/edit/:id','/createNews'],
@@ -148,10 +156,9 @@ app.get('/contact', (req, res) => {
 
 app.post('/send', (req, res) => {
   let message = {
-    from: process.env.EMAIL_FROM,
-    to: req.body.email,
-    subject: '【Web Page】From: '+ req.body.name + 'さん',
-    text: req.body.comment
+    to: process.env.EMAIL_ADDRESS,
+    subject: '【hair-salon-aki】From: '+ req.body.name + 'さん',
+    text: req.body.comment +"\n\nName: "+ req.body.name + "\nEmail: "+ req.body.email
   }
 
   //送信
