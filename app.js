@@ -3,7 +3,7 @@
 // -----------------------------------------------
 const express = require('express');
 const session = require('express-session');
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const { render } = require('ejs');
@@ -264,7 +264,7 @@ app.post('/login', (req, res) => {
         return res.render('admin-login.ejs',{login:req.body, errors:aryErrMsg});
       }
 
-      bcrypt.compare(password, result.rows[0].password, (error, isEquals) => {
+      bcryptjs.compare(password, result.rows[0].password, (error, isEquals) => {
         //パスワードが不一致
         if(! isEquals){
           aryErrMsg.password = strErrPass;
@@ -362,7 +362,7 @@ app.post('/createUser',
     };
     var aryErrMsg = {message:"", name:"", email:"", password:""};
     
-    bcrypt.hash(user.password,10,(error, hash) => {
+    bcryptjs.hash(user.password,10,(error, hash) => {
       connection.query(
         'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',
         [user.name, user.email, hash],
@@ -451,7 +451,7 @@ app.post('/editUser/:id',
     };
     let aryErrMsg = {message:"", name:"", email:"", password:""};
 
-    bcrypt.hash(user.password, 10, (error, hash) => {
+    bcryptjs.hash(user.password, 10, (error, hash) => {
       connection.query(
         'UPDATE users SET name = $1, email = $2, password = $3 WHERE id = $4',
         [user.name, user.email, hash, user.id],
