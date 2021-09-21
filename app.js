@@ -3,7 +3,6 @@
 // -----------------------------------------------
 const express = require('express');
 const session = require('express-session');
-const pgSession = require('express-pg-session')(session);
 const bcryptjs = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
@@ -36,16 +35,9 @@ app.use(
       saveUninitialized: false,
       cookie:{
         httpOnly: true,
-        secure:false, //localだとfalseにしないと、Sessionが保持されない
+        secure:false, //falseにしないと、Sessionが保持されない
         maxage:1000 * 60 * 30
       }
-      // store: new pgSession({
-      //   connectionString: process.env.DATABASE_URL,
-      //   ssl: {
-      //     sslmode:'require',
-      //     rejectUnauthorized:false
-      //   }
-      // })
     })
     );
     
