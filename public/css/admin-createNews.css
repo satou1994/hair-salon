@@ -2,92 +2,70 @@
     SP
 ***************************************************/
 @media ( max-width : 767px ) {
-    .top-img img{ width:50%;}
-    form{
-        width:90%;
-        margin: 0 auto;
-        margin-bottom: 10vh;
-        text-align: left;
-    }
-    .form-group{
-        margin-bottom: 3vh;
-        width:100%;
-    }
-    label{
-        display:block;
-        margin-bottom: 1vh;
-    }
-    input{
-        height: 5vh;
-    }
-    textarea{
-        width:100%;
-    }
-    button{
-        border: solid 1px black;
-        border-radius: 5px;
-        padding: 2vh 3vh;
-    }
-    button:hover{
-        background-color: #d3d3d3;
-    }
-    
-    .error{
-        color:red;
-    }
-
-    .thanks{ 
-        margin: 3em auto;
-        text-align: left;
-        width:80%;
-    }
+  form{
+    width:90%;
+    margin: 0 auto;
+    margin-bottom: 10vh;
+    text-align: left;
+  }
+  .form-group{
+    margin-bottom: 3vh;
+    width:100%;
+  }
+  label{
+    display:block;
+    margin-bottom: 1vh;
+  }
+  input{
+    height: 6vh;
+    width:100%;
+  }
+  textarea{
+    width:100%;
+  }
+  
+  .error{
+    color:red;
+  }
 }
 
 /**************************************************
     PC
 ***************************************************/
 @media ( min-width : 768px ) {
-    form{
-        width:100%;
-        margin: 0 auto;
-        margin-bottom: 4rem;
-        text-align: left;
-    }
-
-    .form-group{
-        margin-bottom: 1rem;
-    }
-
-    label{
-        display:block;
-        margin-bottom: 6px;
-    }
- 
-    textarea{
-        width:100%;
-    }
-
-    button{
-        border: solid 1px black;
-        border-radius: 5px;
-        padding: 8px 10px;
-    }
-
-    button:hover{
-        background-color: #d3d3d3;
-    }
-    
-    .error{
-        color:red;
-    }
-    
-    #title{ 
-        width:100%;
-        height: 2.5rem;
-    }
-
-    .image img{
-        width:30%;
-    }
+  form{
+    width:100%;
+    margin: 0 auto;
+    margin-bottom: 4rem;
+    text-align: left;
   }
+
+  .form-group{
+    margin-bottom: 1rem;
+  }
+
+  label{
+    display:block;
+    margin-bottom: 6px;
+  }
+
+  textarea{
+    width:100%;
+  }
+
+  button{
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 8px 10px;
+  }
+  
+  .error{
+    color:red;
+  }
+  
+  #title{ 
+    width:100%;
+    height: 2.5rem;
+  }
+}
   

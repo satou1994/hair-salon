@@ -14,16 +14,26 @@
     margin-bottom: 1vh;
   }
   input{
-    height: 5vh;
+    height: 6vh;
     width:100%;
   }
   .form-group{
     margin-bottom: 3vh;
     width:100%;
   }
-  .submitBtn{
+  .btn{
     margin-top:5vh;
     height:8vh;
+  }
+  .delete form{margin-bottom:5vh;}
+  .delete input{
+    width:13%;
+    float:right;
+  }
+  .delete::after{
+    content:"";
+    display: block;
+    clear:both;
   }
 
   button{

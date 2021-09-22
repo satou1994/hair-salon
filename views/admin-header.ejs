@@ -1,25 +1,12 @@
-<header>
-    <div class="header-account">管理者アカウント</div>
-    <ul class="header-lists">
-        <li class="header-list" id="login"><a href="/news">ログイン</a></li>
-        <li class="header-list" id="logout"><a href="/news">ログアウト</a></li>
-    </ul>
-
-    <!-- ハンバーガーボタン -->
-    <div class="hamburger_btn spOnly" id="js-hamburger">
-        <span class="hamburger_line hamburger_line1"></span>
-        <span class="hamburger_line hamburger_line2"></span>
-        <span class="hamburger_line hamburger_line3"></span>
-    </div>
-</header>
 <header class="banner-wrapper">
     <div class="header-img"><a href="/">hair salon aki</a></div>
     <ul class="header-lists">
       <% if (locals.isLoggedIn) {%>
         <li class="header-list"><a href="/editUser/<%= locals.userId%>"><%= locals.username %> さん</a></li>
         <%if(locals.userId == 1) {%>
-          <li class="header-list"><a href="/userList">ユーザーリスト</a></li>
+          <li class="header-list"><a href="/userList">User List</a></li>
         <% } %>
+        <li class="header-list"><a href="/newsList">News List</a></li>
         <li class="header-list"><a href="/createNews">新規投稿</a></li>
         <li class="header-list"><a href="/logout">ログアウト</a></li>
       <% } %>

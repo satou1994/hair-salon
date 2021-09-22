@@ -2,8 +2,8 @@
 $(function(){
   if(document.getElementsByClassName('reveal').length > 0){
     ScrollReveal().reveal('.reveal',{
-      delay:100,
-      duration:3000
+      delay:200,
+      duration:2500
     });
     ScrollReveal().reveal('.reveal-back',{
       duration:1000

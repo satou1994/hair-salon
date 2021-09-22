@@ -27,7 +27,7 @@
       <% if(locals.userId == 1){%>
         <div class="delete">
           <form action="/deleteUser/<%= user.id %>" method="post">
-            <input id="delete" class="submitBtn" type="submit" value="削除">
+            <input id="delete" type="submit" value="削除">
           </form>
         </div>
       <% } %>
@@ -61,7 +61,7 @@
           <span id="error-password-check" class="error"></span>
           <input type="password" name="password-check" id="password-check" onKeyUp="passCheck(value);" onblur="blurPassCheck(this)">
         </div>
-        <input class="submitBtn" type="submit" value="編集">
+        <input class="btn" type="submit" value="編集">
       </form>
 
       <div class="return">

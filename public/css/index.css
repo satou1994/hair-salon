@@ -110,6 +110,14 @@ footer{
   .header-list{ padding: 20px 0; }
 
   /* -------------  ハンバーガーボタンの実装  ----------------*/
+  .hamburger_btn{
+    height:10vh;
+    width:10vh;
+    position: fixed;
+    top:0;
+    right:0;
+    z-index: 30;
+  }
   .hamburger_line{
     width:25px;
     height:1px;
@@ -120,9 +128,8 @@ footer{
     transition: all .6s;
   }
   .hamburger_line1{ top:20px;}
-  .hamburger_line2{ top:26px;}
-  .hamburger_line3{ top:32px;}
-
+  .hamburger_line2{ top:28px;}
+  .hamburger_line3{ top:36px;}
   
   /* -------------  ハンバーガークリック時の動作  ----------------*/
   .nav-open .header-lists{
@@ -133,7 +140,7 @@ footer{
   .nav-open .hamburger_line1{
     background-color:white;
     transform: rotate(45deg);
-    top:25px;
+    top:28px;
   }
   .nav-open .hamburger_line2{
     background-color:white;
@@ -143,7 +150,7 @@ footer{
   .nav-open .hamburger_line3{
     background-color:white;
     transform: rotate(-45deg);
-    top:25px;
+    top:28px;
   }
 
 
