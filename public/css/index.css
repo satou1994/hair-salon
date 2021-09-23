@@ -192,6 +192,7 @@ footer{
     text-indent: 15px;
     border-bottom: solid 1px #a9a9a9;
   }
+  .news-content .item a{display:block;}
 
   /* -------------  about  ----------------*/
   .about{position: relative;}
