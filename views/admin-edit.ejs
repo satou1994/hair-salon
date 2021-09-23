@@ -26,7 +26,7 @@
       
       <div id="form-delete" class="delete">
         <form action="/delete/<%= news.id %>" method="post">
-          <input id="delete" class="submitBtn" type="submit" value="削除">
+          <input id="delete" class="btn" type="submit" value="削除">
         </form>
       </div>
 
@@ -44,7 +44,7 @@
           <textarea name="comment" rows="20" cols="80" id="comment" onblur="blurComment(this)" onKeyUp="countLength(value,'textlength');"><%= news.comment %></textarea>
           <p id="textlength">文字数：0</p>
         </div>
-        <input class="submitBtn" type="submit" value="投稿">
+        <input class="btn" type="submit" value="投稿">
       </form>
 
       <div class="return">

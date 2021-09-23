@@ -27,7 +27,7 @@
 
         <div class="error-message"><%= errors.message%></div>
 
-        <form id="form" action="/editUser/<%= user.id %>" method="post">
+        <form id="form" action="/createUser" method="post">
           <div class="form-group">
             <label for="name">Name</label>
             <span id="blur-name" class="error"></span>
@@ -54,7 +54,7 @@
             <span id="error-password-check" class="error"></span>
             <input type="password" name="password-check" id="password-check" onKeyUp="passCheck(value);" onblur="blurPassCheck(this)">
           </div>
-          <input class="submitBtn" type="submit" value="編集">
+          <input class="submitBtn" type="submit" value="作成">
         </form>
 
         <div class="return">

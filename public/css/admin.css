@@ -74,8 +74,8 @@ button:hover{
   background-color: #d3d3d3;
 }
 .return{
-   text-align: left; 
-   margin:0 auto 1em auto ;
+  text-align: left; 
+  margin:0 auto 1em auto ;
 }
 
 .edit{
@@ -91,7 +91,6 @@ footer{
   color:white;
   background-color:#a9a9a9;
 }
-
 
 
 /**************************************************
@@ -114,7 +113,6 @@ footer{
   .btn{
     border: solid 1px #a9a9a9;
     border-radius: 5px;
-    padding: 1.7vh 2.5vh;
   }
   .button{
     padding: 1.5vh 2.5vh;
