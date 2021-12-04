@@ -31,7 +31,9 @@
         <div class="news-contents">
           <%- item.comment %>
         </div>
-        <%- item.image %> 
+        <% if(item.image){ %> 
+          <%- item.image %> 
+        <% } %> 
       </article>
     <% }); %>
   </main>

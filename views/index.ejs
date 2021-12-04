@@ -52,17 +52,18 @@
           <li><img src="https://assets.st-note.com/production/uploads/images/53770283/picture_pc_b79bb505ebdfcc8da6c51b15daedba02.jpg" alt="ホームページトップのスライドショーの画像"></li>
           <li><img src="https://static.wixstatic.com/media/3254e0_e6f25b6734534676beea65b1c20f51eb~mv2_d_1920_1280_s_2.jpg/v1/fill/w_1920,h_1280,al_c,q_90/3254e0_e6f25b6734534676beea65b1c20f51eb~mv2_d_1920_1280_s_2.webp" alt="ホームページトップのスライドショーの画像"></li>
         </ul>
-        <div class="news">
+      </div>
+      
+      <section>
+        <h2 class="title reveal-back">- News -</h2>
+        <div class="container news">
           <div class="news-contents">
-            <h3>- News -</h3>
-            <div class="news-content">
-              <% news.forEach((item) => { %>
-              <div class="item" ><a href="/news#<%= item.id %>"><%= item.title %></a></div>
-              <% }); %>
-            </div>
+            <% for(let i = 0; i < 3; i++){ %>
+            <div class="item" ><a href="/news#<%= news[i].id %>"><%= news[i].title %></a></div>
+            <% }; %>
           </div>
         </div>
-      </div>
+      </section>
       
       <section>
         <h2 class="title reveal-back">About us</h2>

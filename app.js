@@ -1,14 +1,19 @@
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 //      定数宣言
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 const express = require('express');
 const session = require('express-session');
 const bcryptjs = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const { render } = require('ejs');
-// const multer = require('multer');
 const app = express();
+//Drive API
+const multer = require('multer');
+const {google} = require('googleapis');
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
+const bufferToStrem = require('buffer-to-stream');
 
 const strErrMsg = "エラーが発生しました";
 const strErrEmail = "メールアドレスが正しくありません";
@@ -18,9 +23,9 @@ const strEmpEmail = "メールアドレスが未入力です";
 const strEmpPass = "パスワードが未入力です";
 const strDupEmail = "メースアドレスは既に登録されています。";
 
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 //      Using
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({
@@ -47,6 +52,7 @@ app.use(
   (req, res, next) => {
   if( req.session.userId === undefined ){
     req.session.path = req.baseUrl;
+    // next();//←ログイン処理無くしたい時に追加
     res.redirect('/login');
   } else {
     res.locals.userId = req.session.userId;
@@ -93,9 +99,12 @@ app.use(
 });
 
 
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 //      Routing
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
+//***********************************************
+//              Webページ
+//***********************************************
 app.get('/', (req, res) => {
   connection.query(
     'SELECT * FROM news ORDER BY id DESC',
@@ -164,18 +173,9 @@ app.get('/kids-discount-detail', (req, res) => {
 });
 
 
-// --------  admin  -----------
-//multerの設定
-// var mltStorage = multer.diskStorage({
-//   destination: function(req, file, cb) {
-//     cb(null, "uploads/")
-//   },
-//   filename: function(req, file, cb) {
-//     cb(null, Date.now() + "_" + file.originalname);
-//   }
-// });
-// const upload = multer({ storage: mltStorage});
-
+//***********************************************
+//                  admin
+//***********************************************
 app.get('/newsList', (req, res) => {
   connection.query(
     'SELECT * FROM news ORDER BY id DESC',
@@ -186,25 +186,39 @@ app.get('/newsList', (req, res) => {
   );
 });
 
-//********** 記事 **********
 app.get('/createNews', (req, res) => {
   res.render('admin-createNews.ejs');
 });
 
-app.post('/createNews', 
-  // upload.single('file'),
-  (req, res) => {
-  connection.query(
-    'INSERT INTO news (title, comment) VALUES ($1, $2)',
-    [req.body.title, req.body.comment],
-    (error, result) => {
-      if(error) console.log(error);
-      res.redirect('/newsList');
-      // res.send(req.file.originalname + 'ファイルのアップロードが完了しました');
-    }
+app.post('/createNews', upload.single('file'), (req, res) => {
+  if(req.file){
+    //Gドラに画像アップロード
+    authorize(req.file, UploadFile).then((value) => {
+      var url = "http://drive.google.com/uc?export=view&id=";
+      url = url + value.data.id;
+      //DB更新
+      connection.query(
+        'INSERT INTO news (title, comment, image) VALUES ($1, $2, $3)',
+        [req.body.title, req.body.comment,url],
+        (error, result) => {
+          if(error) console.log(error);
+          res.redirect('/newsList');
+        }
+      );
+    }).catch((err) => {
+      console.log('ERROR',err);
+    });
+  }else{
+    connection.query(
+      'INSERT INTO news (title, comment) VALUES ($1, $2)',
+      [req.body.title, req.body.comment],
+      (error, result) => {
+        if(error) console.log(error);
+        res.redirect('/newsList');
+      }
     );
   }
-);
+});
   
 app.get('/edit/:id',(req,res) => {
   connection.query(
@@ -212,8 +226,8 @@ app.get('/edit/:id',(req,res) => {
     [req.params.id],
     (error,result) => {
       if(error) console.log(error);
-      if(result.rowCount <= 0) return res.redirect('/newsList');
-      res.render('admin-edit.ejs',{news:result.rows[0]});
+      if(result == undefined || result.rowCount <= 0) return res.redirect('/newsList');
+      res.render('admin-editNews.ejs',{news:result.rows[0]});
     }
   );
 });
@@ -240,7 +254,61 @@ app.post('/delete/:id',(req, res) => {
   );
 });
 
-//********** ログイン ************
+//********** G-Driveの処理 **********
+
+
+app.post('/upImg/:id',upload.single('file'), (req, res) => {
+  //Gドラに画像アップロード
+  authorize(req.file, UploadFile).then((value) => {
+    var url = "http://drive.google.com/uc?export=view&id=";
+    url = url + value.data.id;
+    //DB更新
+    connection.query(
+      'UPDATE news SET image = $1 WHERE id = $2',
+      [url, req.params.id],
+      (error,result) => {
+        if(error) console.log(error);
+        var param = '/edit/' + req.params.id;
+        res.redirect(param);
+      }
+    );
+  }).catch((err) => {
+    console.log('ERROR',err);
+  });
+});
+
+app.post('/delImg/:id',(req, res) => {
+  //Gドラのファイルを削除する処理
+  connection.query(
+    'SELECT image FROM news WHERE id = $1',
+    [req.params.id],
+    (error,result) => {
+      if(error){
+        console.log(error);
+        var param = '/edit/' + req.params.id;
+        res.redirect(param);
+      } else{
+        var resImg = result.rows[0].image;
+        var driveImgID = resImg.substr(resImg.lastIndexOf('=') + 1);
+        authorize(driveImgID, DeleteFile);
+      }
+    }
+  );
+  // DBのimageカラムを削除する処理
+  connection.query(
+    'UPDATE news SET image = \'\' WHERE id = $1',
+    [req.params.id],
+    (error,result) => {
+      if(error) console.log(error);
+      var param = '/edit/' + req.params.id;
+      res.redirect(param);
+    }
+  );
+});
+
+//***********************************************
+//                  ログイン
+//***********************************************
 app.get('/login',(req, res) => {
   res.render('admin-login.ejs',{login:"", errors:""});
 });
@@ -290,7 +358,9 @@ app.get('/logout', (req, res) => {
   });
 })
 
-//********** ユーザー ************
+//***********************************************
+//                ユーザー
+//***********************************************
 app.get('/userList', (req, res) => {
   connection.query(
     'SELECT id, name, email FROM users ORDER BY id DESC',
@@ -486,11 +556,12 @@ app.post('/deleteUser/:id',(req, res) => {
   );
 });
 
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 //      postgresql設定
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 const { Client } = require('pg');
 const StreamTransport = require('nodemailer/lib/stream-transport');
+const { drive } = require('googleapis/build/src/apis/drive');
 require('dotenv').config({debug:true});
 
 // --------  接続情報  -----------
@@ -506,18 +577,95 @@ const connection = new Client({
 connection.connect((err) => {
   //エラー時の処理
   if(err){
-      console.log('error connecting:' + err.stack);
-      return;
+    console.log('error connecting:' + err.stack);
+    return;
   }
   //接続成功時の処理
   console.log('success');
 });
 
+// -------------------------------------------------------------------------------
+//      Google Drive API
+// -------------------------------------------------------------------------------
+function authorize(file, callback) {
+  const oAuth2Client = new google.auth.OAuth2(
+    process.env.CLIENT_ID,
+    process.env.CLIENT_SECRET,
+    process.env.REDIRECT_URIS
+  );
+    
+  const token_path = {
+    "access_token":process.env.ACCESS_TOKEN,
+    "refresh_token":process.env.REFRESH_TOKEN,
+    "scope":process.env.SCOPE,
+    "token_type":process.env.TOKEN_TYPE,
+    "expiry_date":process.env.EXPIRY_DATE
+  };
+  
+  oAuth2Client.setCredentials(token_path);
+  return callback(oAuth2Client,file);
+}
+
+// Read Files
+function listFiles(auth) {
+  const drive = google.drive({version: 'v3', auth});
+  drive.files.list({
+    pageSize: 10,
+    fields: 'nextPageToken, files(id, name)',
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const files = res.data.files;
+    if (files.length) {
+      console.log('Files:');
+      files.map((file) => {
+        console.log(`${file.name} (${file.id})`);
+      });
+    } else {
+      console.log('No files found.');
+    }
+  });
+}
+
+// Upload File
+function UploadFile(auth, file) {
+  const drive = google.drive({version: 'v3', auth});  
+  var fileMetadata = {
+    name: file.originalname,
+    parents: ['1Q44YS2E0pVm7raA8XLUkLun42tgyReV-']
+    };
+  var media = {
+    mimeType: file.minetype,
+    body: bufferToStrem(file.buffer)
+  };
+
+  var result = drive.files.create({
+    resource: fileMetadata,
+    media: media,
+    fields: 'id'
+  });
+
+  return result;
+}
+
+// Delete File
+function DeleteFile(auth, deleteImgID) {
+  const drive = google.drive({version: 'v3', auth});  
+  const params = {
+    fileId: deleteImgID
+  };
+
+  drive.files.delete(
+    params,
+    function (err, res) {
+      if (err) console.error(err);
+    }
+  );
+}
 
 
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 //      mail
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 const smtp =nodemailer.createTransport({
   service:'gmail',
   port: 587,
@@ -543,9 +691,9 @@ let submit = (message) => {
   }
 }
 
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 //      port
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
@@ -553,19 +701,18 @@ if (port == null || port == "") {
 app.listen(port);
 
 
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 //      オリジナル
-// -----------------------------------------------
+// -------------------------------------------------------------------------------
 // --------  db → html変換  -----------
 let comRep = (results) => {
   results.forEach(result => {
-    if(result.comment !== null || result.comment){
+    if(result.comment !== null && result.comment){
       //改行を変換
       result.comment = result.comment.replace(/\r\n/g , '<br>');
     }
-    
-    if(result.image !== null || result.image){
-      //<img>をsrc=""を指定して生成
+    if(result.image !== null && result.image.length !== 0 && result.image){
+      //<img>をsrc=""を指定して生成
       result.image = "<img src=\"" + result.image + "\" alt=\"ニュースの画像\">"; 
     }
   });

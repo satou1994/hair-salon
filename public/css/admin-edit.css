@@ -45,6 +45,11 @@
   .error{
     color:red;
   }
+
+  img{
+    max-width:100%;
+    margin-bottom: 10px;
+  }
 }
 
 /**************************************************
@@ -101,5 +106,11 @@
       display: block;
       clear:both;
   }
+
+  img{
+    margin-bottom: 10px;
+    max-height:200px;
+    max-width:200px;
   }
+}
   

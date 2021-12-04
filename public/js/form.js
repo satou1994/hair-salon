@@ -7,6 +7,8 @@ const strCommentLength = "800文字以内で入力してください";
 const strEmail = "メールアドレスが未入力です";
 const strPassword = "パスワードが未入力です";
 const strPassCheck = "パスワードが違います";
+const strCreate = "投稿を新規作成します\nよろしいですか？";
+const strEdit = "投稿を編集します\nよろしいですか？";
 const strDelete = "削除した場合、元に戻すことができません\n削除しますか？";
 
 
@@ -207,32 +209,36 @@ function countLength(value,textlength){
 /*--------------------------------------------------
   ダイアログ
 --------------------------------------------------*/
-// $(function(){
-//   var btn = document.getElementById('delete');
-//   if(btn != undefined){
-//     btn.addEventListener('click',function(){
-//       console.log('click!');
-//       window.confirm(strDelete);
-//     });
-//   }
-// });
-// $(function(){
-//   $('#delete').click(function(){
-//   });
-// });
+$(function(){
+  $('.dialogue-create').submit(function(){
+    if(!window.confirm(strCreate)){
+      return false;
+    }
+  });
+  $('.dialogue-edit').submit(function(){
+    if(!window.confirm(strEdit)){
+      return false;
+    }
+  });
+  $('.dialogue-delete').submit(function(){
+    if(!window.confirm(strDelete)){
+      return false;
+    }
+  });
+});
 
 /*--------------------------------------------------
   設定したファイルを表示する処理
 --------------------------------------------------*/
-// var fileElement = document.getElementById("file")
-// var imgElement = document.getElementById("img")
+var fileElement = document.getElementById("file")
+var imgElement = document.getElementById("img")
 
-// fileElement.onchange = function() {
-//   var fileReader = new FileReader()
-//   var file = fileElement.files[0]
+fileElement.onchange = function() {
+  var fileReader = new FileReader()
+  var file = fileElement.files[0]
   
-//   fileReader.readAsDataURL(file);
-//   fileReader.onload = function() {
-//     imgElement.innerHTML = `<img src=\"${this.result}\">`
-//   } 
-// }
+  fileReader.readAsDataURL(file);
+  fileReader.onload = function() {
+    imgElement.innerHTML = `<img src=\"${this.result}\">`
+  } 
+}
