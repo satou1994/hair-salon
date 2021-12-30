@@ -1,59 +1,50 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <!-- Web表示設定 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="秋田市の美容室「ヘアサロンアキ」の店舗情報です。カット・カラー・パーマだけでなく、ヘアドネーションも取り扱っています" />
-    <!-- アイコンの設定-->
-    <link rel="icon" href="#.ico" />
-    <link rel="apple-touch-icon" href="#.png" />
-    <!-- プラグイン -->
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital@1&family=Barlow:wght@200&display=swap" rel="stylesheet">
-    <!-- css -->
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/common.css">
+
+<head>
+  <%- include('head'); %>
     <link rel="stylesheet" href="/css/access.css">
-    
-    <title>access:hair-salon-aki</title>
-  </head>
-  <body>
-    <%- include('header'); %> 
+    <title>access:hair-salon</title>
+</head>
+
+<body>
+  <%- include('header'); %>
 
     <main>
-        <div class="top">
-            <h1 class="top-title">Access</h1>
-        </div>
+      <div class="top">
+        <h1 class="top-title">Access</h1>
+      </div>
 
-        <div class="access-img">
-          <img src="https://assets.st-note.com/production/uploads/images/53770224/picture_pc_9de779d0763adbbafe0fa194e7f3599a.jpg?width=800" title="サロン画像">
+      <div class="access-img">
+        <img src="http://drive.google.com/uc?export=view&id=1D7qjNSvpZEFIBQ9wnEzKSp_75Fhc3TKC" title="サロン画像">
+      </div>
+
+      <div class="access-address">
+        <ul class="address-lists">
+          <li class="address-list">〒150-0043</li>
+          <li class="address-list">東京都渋谷区道玄坂２丁目１</li>
+          <li class="address-list">Tel：0120-1111-2222</li>
+          <li class="address-list">Email：hairsalon@test.com</li>
+          <li class="address-list">営業時間：10:00 〜 20:00</li>
+          <li class="address-list">店休日：年末年始、不定期（<a href="/news">News</a>情報をご確認下さい）</li>
+        </ul>
+      </div>
+
+      <section>
+        <h2 class="title">Map</h2>
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.7281085126874!2d139.69853721562325!3d35.65906988019945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b78491b9667%3A0x1d5a39ab94bbb8d9!2z44OP44OB5YWs5YmN5bqD5aC0!5e0!3m2!1sja!2sjp!4v1640821278179!5m2!1sja!2sjp"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
-        
-        <div class="access-address">
-          <ul class="address-lists">
-            <li class="address-list">〒010-0923</li>
-            <li class="address-list">秋田県秋田市旭錦町4-58 ドン・キホーテ2F</li>
-            <li class="address-list">Tel：018-862-6115</li>
-            <li class="address-list">Email：hairsalon.aki@gmail.com</li>
-          </ul>
-        </div>
-        
-        <section>
-          <h2 class="title">Map</h2>
-          <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3069.109805929633!2d140.10702716537463!3d39.71471492945295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z56eL55Sw55yM56eL55Sw5biC5pet6Yym55S6NC01OCDjg4njg7Pjg7vjgq3jg5vjg7zjg4YyRg!5e0!3m2!1sja!2sjp!4v1628214389635!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-          </div>
-        </section>
+      </section>
     </main>
 
     <%- include('footer'); %>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script  src="js/style.js"></script>
-  </body>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://unpkg.com/scrollreveal"></script>
+      <script src="js/style.js"></script>
+</body>
+
 </html>

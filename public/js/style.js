@@ -1,5 +1,19 @@
-//スクロールに合わせてふわっと表示
-$(function(){
+// ----------------------------------------------------------
+//   実行
+// ----------------------------------------------------------
+//スクロール
+scroll();
+//ハンバーガーメニュー
+toggleNav();
+//headerのaction付与
+header();
+//ヘッダーアニメーション
+headerAnimation();
+
+// ----------------------------------------------------------
+//   スクロールに合わせてふわっと表示
+// ----------------------------------------------------------
+function scroll() {
   if(document.getElementsByClassName('reveal').length > 0){
     ScrollReveal().reveal('.reveal',{
       delay:200,
@@ -9,13 +23,7 @@ $(function(){
       duration:1000
     });
   }
-});
-
-//ハンバーガーメニュー
-toggleNav();
-
-//headerのaction
-header();
+}
 
 // ----------------------------------------------------------
 //   ハンバーガーメニュークリック時の動作
@@ -28,7 +36,6 @@ function toggleNav() {
     body.classList.toggle('nav-open');
   });
 }
-
 // ----------------------------------------------------------
 //   headerのclass="action"の付与
 // ----------------------------------------------------------
@@ -56,4 +63,31 @@ function header(){
   if(pathname === '/contact'){
       document.getElementById('contact').classList.add('active');
   }
+}
+// ----------------------------------------------------------
+//   headerアニメーション
+// ----------------------------------------------------------
+function headerAnimation(){
+  let refOffset = 0;//ユーザーがページスクロールした距離を取得
+  const bannerHeight = 50; //ナビゲーションバーの高さ
+  const bannerWrapper = document.querySelector('.banner-wrapper');
+  
+  const handler = () => {
+    const newOffset = window.scrollY; //ユーザーのスクロール値取得
+    
+  if (newOffset > bannerHeight) {
+    if (newOffset > refOffset) {
+      $(".banner-wrapper").removeClass('animateIn');
+      $(".banner-wrapper").addClass('animateOut');
+    } else if(newOffset < refOffset-10){
+      $(".banner-wrapper").removeClass('animateOut');
+      $(".banner-wrapper").addClass('animateIn');
+    }
+    bannerWrapper.style.background = 'rgba(255, 255, 255, 0.6)';
+    refOffset = newOffset;  //スクロール後を初期値に設定
+    } else {
+      bannerWrapper.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+    }
+  };
+  window.addEventListener('scroll', handler,false);
 }

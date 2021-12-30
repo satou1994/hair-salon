@@ -4,17 +4,19 @@
 const express = require('express');
 const session = require('express-session');
 const bcryptjs = require('bcryptjs');
-const nodemailer = require('nodemailer');
-const dotenv = require('dotenv');
-const { render } = require('ejs');
 const app = express();
+
 //Drive API
 const multer = require('multer');
-const {google} = require('googleapis');
-const storage = multer.memoryStorage()
-const upload = multer({ storage: storage })
-const bufferToStrem = require('buffer-to-stream');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
+//Modules
+const googleModule = require('./modules/google.js');
+const originalModule = require('./modules/original.js');
+const postgreSqlModule =require('./modules/postgreSQL.js');
+
+//Messages
 const strErrMsg = "エラーが発生しました";
 const strErrEmail = "メールアドレスが正しくありません";
 const strErrPass = "パスワードが正しくありません";
@@ -24,7 +26,7 @@ const strEmpPass = "パスワードが未入力です";
 const strDupEmail = "メースアドレスは既に登録されています。";
 
 // -------------------------------------------------------------------------------
-//      Using
+//      User Management
 // -------------------------------------------------------------------------------
 app.use(express.static('public'));
 app.use(express.json());
@@ -35,16 +37,16 @@ app.use(express.urlencoded({
 //********** セッション管理 **********
 app.use(
   session({
-      secret: 'my_secret_key',
-      resave: false,
-      saveUninitialized: false,
-      cookie:{
-        httpOnly: true,
-        secure:false, //falseにしないと、Sessionが保持されない
-        maxage:1000 * 60 * 30
-      }
-    })
-    );
+    secret: 'my_secret_key',
+    resave: false,
+    saveUninitialized: false,
+    cookie:{
+      httpOnly: true,
+      secure:false, //falseにしないと、Sessionが保持されない
+      maxage:1000 * 60 * 30
+    }
+  })
+);
     
 //********** ユーザー管理者用の制御処理 **********
 app.use(
@@ -106,7 +108,7 @@ app.use(
 //              Webページ
 //***********************************************
 app.get('/', (req, res) => {
-  connection.query(
+  postgreSqlModule.connection.query(
     'SELECT * FROM news ORDER BY id DESC',
     (error, result) => {
       if(error) console.log(error);
@@ -116,11 +118,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/news', (req, res) => {
-  connection.query(
+  postgreSqlModule.connection.query(
     'SELECT * FROM news ORDER BY id DESC',
     (error, result) => {
       if(error) console.log(error);
-      res.render('news.ejs',{news:comRep(result.rows)});
+      res.render(
+        'news.ejs',
+        {news:originalModule.conversionIndention(result.rows)}
+      );
     }
   );
 });
@@ -130,7 +135,7 @@ app.get('/menu', (req, res) => {
 });
 
 app.get('/gallery', (req, res) => {
-  connection.query(
+  postgreSqlModule.connection.query(
     'SELECT * FROM gallery ORDER BY last_update DESC',
     (error,result) => {
       if(error) console.log(error);
@@ -163,7 +168,7 @@ app.post('/send', (req, res) => {
   }
 
   //送信
-  submit(message);
+  googleModule.submit(message);
   
   res.redirect('/contact');
 });
@@ -174,14 +179,17 @@ app.get('/kids-discount-detail', (req, res) => {
 
 
 //***********************************************
-//                  admin
+//                  adminページ
 //***********************************************
 app.get('/newsList', (req, res) => {
-  connection.query(
+  postgreSqlModule.connection.query(
     'SELECT * FROM news ORDER BY id DESC',
     (error,result) => {
       if(error) console.log(error);
-      res.render('admin-newsList.ejs',{news:comRep(result.rows)});
+      res.render(
+        'admin-newsList.ejs',
+        {news:originalModule.conversionIndention(result.rows)}
+      );
     }
   );
 });
@@ -197,7 +205,7 @@ app.post('/createNews', upload.single('file'), (req, res) => {
       var url = "http://drive.google.com/uc?export=view&id=";
       url = url + value.data.id;
       //DB更新
-      connection.query(
+      postgreSqlModule.connection.query(
         'INSERT INTO news (title, comment, image) VALUES ($1, $2, $3)',
         [req.body.title, req.body.comment,url],
         (error, result) => {
@@ -209,7 +217,7 @@ app.post('/createNews', upload.single('file'), (req, res) => {
       console.log('ERROR',err);
     });
   }else{
-    connection.query(
+    postgreSqlModule.connection.query(
       'INSERT INTO news (title, comment) VALUES ($1, $2)',
       [req.body.title, req.body.comment],
       (error, result) => {
@@ -221,7 +229,7 @@ app.post('/createNews', upload.single('file'), (req, res) => {
 });
   
 app.get('/edit/:id',(req,res) => {
-  connection.query(
+  postgreSqlModule.connection.query(
     'SELECT * FROM news WHERE id = $1',
     [req.params.id],
     (error,result) => {
@@ -233,7 +241,7 @@ app.get('/edit/:id',(req,res) => {
 });
 
 app.post('/edit/:id',(req,res) => {
-  connection.query(
+  postgreSqlModule.connection.query(
     'UPDATE news SET title = $1, comment = $2 WHERE id = $3',
     [req.body.title,req.body.comment,req.params.id],
     (error,result) => {
@@ -244,7 +252,7 @@ app.post('/edit/:id',(req,res) => {
 });
   
 app.post('/delete/:id',(req, res) => {
-  connection.query(
+  postgreSqlModule.connection.query(
     'DELETE FROM news WHERE id = $1',
     [req.params.id],
     (error,result) => {
@@ -255,15 +263,13 @@ app.post('/delete/:id',(req, res) => {
 });
 
 //********** G-Driveの処理 **********
-
-
 app.post('/upImg/:id',upload.single('file'), (req, res) => {
   //Gドラに画像アップロード
-  authorize(req.file, UploadFile).then((value) => {
+  googleModule.authorize(req.file, UploadFile).then((value) => {
     var url = "http://drive.google.com/uc?export=view&id=";
     url = url + value.data.id;
     //DB更新
-    connection.query(
+    postgreSqlModule.connection.query(
       'UPDATE news SET image = $1 WHERE id = $2',
       [url, req.params.id],
       (error,result) => {
@@ -279,7 +285,7 @@ app.post('/upImg/:id',upload.single('file'), (req, res) => {
 
 app.post('/delImg/:id',(req, res) => {
   //Gドラのファイルを削除する処理
-  connection.query(
+  postgreSqlModule.connection.query(
     'SELECT image FROM news WHERE id = $1',
     [req.params.id],
     (error,result) => {
@@ -290,12 +296,12 @@ app.post('/delImg/:id',(req, res) => {
       } else{
         var resImg = result.rows[0].image;
         var driveImgID = resImg.substr(resImg.lastIndexOf('=') + 1);
-        authorize(driveImgID, DeleteFile);
+        googleModule.authorize(driveImgID, DeleteFile);
       }
     }
   );
   // DBのimageカラムを削除する処理
-  connection.query(
+  postgreSqlModule.connection.query(
     'UPDATE news SET image = \'\' WHERE id = $1',
     [req.params.id],
     (error,result) => {
@@ -319,7 +325,7 @@ app.post('/login', (req, res) => {
   const path = req.session.path;
   var aryErrMsg = {email:"",password:""};
 
-  connection.query(
+  postgreSqlModule.connection.query(
     'SELECT * FROM users WHERE email = $1',
     [email],
     (error,result) => {
@@ -362,7 +368,7 @@ app.get('/logout', (req, res) => {
 //                ユーザー
 //***********************************************
 app.get('/userList', (req, res) => {
-  connection.query(
+  postgreSqlModule.connection.query(
     'SELECT id, name, email FROM users ORDER BY id DESC',
     (error, result) => {
       if(error) console.log(error);
@@ -409,7 +415,7 @@ app.post('/createUser',
     };
     var aryErrMsg = {message:"", name:"", email:"", password:""};
 
-    connection.query(
+    postgreSqlModule.connection.query(
       'SELECT email FROM users WHERE email = $1',
       [user.email],
       (error, result) => {
@@ -432,7 +438,7 @@ app.post('/createUser',
     var aryErrMsg = {message:"", name:"", email:"", password:""};
     
     bcryptjs.hash(user.password,10,(error, hash) => {
-      connection.query(
+      postgreSqlModule.connection.query(
         'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',
         [user.name, user.email, hash],
         (error,result) => {
@@ -449,7 +455,7 @@ app.post('/createUser',
 );
 
 app.get('/editUser/:id', (req, res) => {
-  connection.query(
+  postgreSqlModule.connection.query(
     'SELECT id, name, email FROM users WHERE id = $1',
     [req.params.id],
     (error, result) => {
@@ -496,7 +502,7 @@ app.post('/editUser/:id',
     };
     let aryErrMsg = {message:"", name:"", email:"", password:""};
 
-    connection.query(
+    postgreSqlModule.connection.query(
     'SELECT id, email FROM users WHERE email = $1',
       [user.email],
       (error, result) => {
@@ -521,7 +527,7 @@ app.post('/editUser/:id',
     let aryErrMsg = {message:"", name:"", email:"", password:""};
 
     bcryptjs.hash(user.password, 10, (error, hash) => {
-      connection.query(
+      postgreSqlModule.connection.query(
         'UPDATE users SET name = $1, email = $2, password = $3 WHERE id = $4',
         [user.name, user.email, hash, user.id],
         (error,result) => {
@@ -546,7 +552,7 @@ app.post('/editUser/:id',
 );
 
 app.post('/deleteUser/:id',(req, res) => {
-  connection.query(
+  postgreSqlModule.connection.query(
     'DELETE FROM users WHERE id = $1',
     [req.params.id],
     (error,result) => {
@@ -557,139 +563,17 @@ app.post('/deleteUser/:id',(req, res) => {
 });
 
 // -------------------------------------------------------------------------------
-//      postgresql設定
+//      DB接続確認
 // -------------------------------------------------------------------------------
-const { Client } = require('pg');
-const StreamTransport = require('nodemailer/lib/stream-transport');
-const { drive } = require('googleapis/build/src/apis/drive');
-require('dotenv').config({debug:true});
-
-// --------  接続情報  -----------
-const connection = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    sslmode:'require',
-    rejectUnauthorized:false
-  }
-});
-
-// --------  接続  -----------
-connection.connect((err) => {
-  //エラー時の処理
+postgreSqlModule.connection.connect((err) => {
+  //接続エラー
   if(err){
     console.log('error connecting:' + err.stack);
     return;
   }
-  //接続成功時の処理
+  //接続成功
   console.log('success');
 });
-
-// -------------------------------------------------------------------------------
-//      Google Drive API
-// -------------------------------------------------------------------------------
-function authorize(file, callback) {
-  const oAuth2Client = new google.auth.OAuth2(
-    process.env.CLIENT_ID,
-    process.env.CLIENT_SECRET,
-    process.env.REDIRECT_URIS
-  );
-    
-  const token_path = {
-    "access_token":process.env.ACCESS_TOKEN,
-    "refresh_token":process.env.REFRESH_TOKEN,
-    "scope":process.env.SCOPE,
-    "token_type":process.env.TOKEN_TYPE,
-    "expiry_date":process.env.EXPIRY_DATE
-  };
-  
-  oAuth2Client.setCredentials(token_path);
-  return callback(oAuth2Client,file);
-}
-
-// Read Files
-function listFiles(auth) {
-  const drive = google.drive({version: 'v3', auth});
-  drive.files.list({
-    pageSize: 10,
-    fields: 'nextPageToken, files(id, name)',
-  }, (err, res) => {
-    if (err) return console.log('The API returned an error: ' + err);
-    const files = res.data.files;
-    if (files.length) {
-      console.log('Files:');
-      files.map((file) => {
-        console.log(`${file.name} (${file.id})`);
-      });
-    } else {
-      console.log('No files found.');
-    }
-  });
-}
-
-// Upload File
-function UploadFile(auth, file) {
-  const drive = google.drive({version: 'v3', auth});  
-  var fileMetadata = {
-    name: file.originalname,
-    parents: ['1Q44YS2E0pVm7raA8XLUkLun42tgyReV-']
-    };
-  var media = {
-    mimeType: file.minetype,
-    body: bufferToStrem(file.buffer)
-  };
-
-  var result = drive.files.create({
-    resource: fileMetadata,
-    media: media,
-    fields: 'id'
-  });
-
-  return result;
-}
-
-// Delete File
-function DeleteFile(auth, deleteImgID) {
-  const drive = google.drive({version: 'v3', auth});  
-  const params = {
-    fileId: deleteImgID
-  };
-
-  drive.files.delete(
-    params,
-    function (err, res) {
-      if (err) console.error(err);
-    }
-  );
-}
-
-
-// -------------------------------------------------------------------------------
-//      mail
-// -------------------------------------------------------------------------------
-const smtp =nodemailer.createTransport({
-  service:'gmail',
-  port: 587,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
-
-let submit = (message) => {
-  try {
-    smtp.sendMail(message,function(error, info){
-      if(error){
-        console.log(error);
-        return;
-      }
-  
-      console.log(info.messageId);
-    });    
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 // -------------------------------------------------------------------------------
 //      port
@@ -699,23 +583,3 @@ if (port == null || port == "") {
   port = 3000;
 }
 app.listen(port);
-
-
-// -------------------------------------------------------------------------------
-//      オリジナル
-// -------------------------------------------------------------------------------
-// --------  db → html変換  -----------
-let comRep = (results) => {
-  results.forEach(result => {
-    if(result.comment !== null && result.comment){
-      //改行を変換
-      result.comment = result.comment.replace(/\r\n/g , '<br>');
-    }
-    if(result.image !== null && result.image.length !== 0 && result.image){
-      //<img>をsrc=""を指定して生成
-      result.image = "<img src=\"" + result.image + "\" alt=\"ニュースの画像\">"; 
-    }
-  });
-
-  return results;
-};

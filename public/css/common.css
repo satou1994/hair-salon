@@ -215,18 +215,45 @@ footer{
 @media ( min-width : 768px ) {
   .pcOnly { display:block; }
   .spOnly { display:none; }	/* PCでは非表示 */
-  header,main,footer { width:980px; }
+  main { width:980px; }
   /*--------------------------------------------------
       header
   --------------------------------------------------*/
-  .header-img img{
-    width:600px;
+  header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px;
+  
+    z-index:4;
+    transition: all 300ms ease-in-out;
+    position: fixed;
+    top:0;
+    background-color: white;
+  }
+
+  .header-img{ 
+    font-size: 25px;
+    font-weight: bold;
+    padding-left:20px;
+  }
+  
+  header li{
+    padding:0 10px;
   }
   
   .header-lists {
     display: flex;
-    justify-content: space-around;
-    margin-top:2em;
-    font-family: 'Barlow','Atkinson Hyperlegible', sans-serif;
+    align-items: flex-end;
+    vertical-align: bottom;
+    padding-right:10px;
+  }
+
+  /* -------------  animation  ----------------*/
+  .animateIn{
+    transform:translateY(0px);
+  }
+  .animateOut{
+    transform:translateY(-100%);
   }
 }

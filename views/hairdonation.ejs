@@ -1,111 +1,115 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="utf-8" />
-    <!-- Web表示設定 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="keyword" content="hair salon aki,ヘアサロンアキ,美容室,秋田,秋田市,ヘアドネーション,ドンキ">
-    <meta name="description" content="秋田市の美容室「ヘアサロンアキ」の店舗情報です。カット・カラー・パーマだけでなく、ヘアドネーションも取り扱っています" />
-    <!-- アイコンの設定-->
-    <link rel="icon" href="#.ico" />
-    <link rel="apple-touch-icon" href="#.png" />
-    <!-- プラグイン -->
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital@1&family=Barlow:wght@200&display=swap" rel="stylesheet">
-    <!-- css -->
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/hairdonation.css">
-    
-    <title>hair-donation:hair-salon-aki</title>
-</head>
-<body>
-    <%- include('header'); %> 
-    
-    <main>
-        <div class="top">
-            <div class="top-img"><img src="https://static.wixstatic.com/media/3254e0_a05deee56c8d45b3838a8cc7662a088f~mv2.jpg/v1/fill/w_563,h_174,al_c,lg_1,q_80/3254e0_a05deee56c8d45b3838a8cc7662a088f~mv2.webp" title="メニューページのトップ画像"></div>
-            <h1 class="top-title">ヘアドネーション</h1>
-        </div>
 
-        <section>
-            <h2 class="title reveal-back">hair salon akiはヘアドネーション賛同美容室です</h2>
-            <div class="donation reveal">
-                <p>
-                    hair salon akiはヘアドネーション賛同美容室です。<br>
-                    ウィッグが必要な方々のため少しでも髪の寄付が多くなることを心から願っております。<br>
-                    髪を寄付していただいた方々には感謝の気持ちでいっぱいです。<br>
-                    誠にありがとうございました。<br>
-                    ヘアドネーションに協力していただいた方々にはスタッフが責任をもってカットを施します。<br>
-                    カット料金のみ無料とさせていただきます。<br>
-                    ​これからもご協力よろしくお願いいたします。
-                </p>
+<head>
+  <%- include('head'); %>
+    <link rel="stylesheet" href="/css/hairdonation.css">
+    <title>hair-donation:hair-salon</title>
+</head>
+
+<body>
+  <%- include('header'); %>
+
+    <main>
+      <div class="top">
+        <div class="top-img"><img
+            src="https://static.wixstatic.com/media/3254e0_a05deee56c8d45b3838a8cc7662a088f~mv2.jpg/v1/fill/w_563,h_174,al_c,lg_1,q_80/3254e0_a05deee56c8d45b3838a8cc7662a088f~mv2.webp"
+            title="メニューページのトップ画像"></div>
+        <h1 class="top-title">ヘアドネーション</h1>
+      </div>
+
+      <section>
+        <h2 class="title reveal-back">hair salonはヘアドネーション賛同美容室です</h2>
+        <div class="donation reveal">
+          <p>
+            hair salonはヘアドネーション賛同美容室です。<br>
+            ウィッグが必要な方々のため少しでも髪の寄付が多くなることを心から願っております。<br>
+            髪を寄付していただいた方々には感謝の気持ちでいっぱいです。<br>
+            誠にありがとうございました。<br>
+            ヘアドネーションに協力していただいた方々にはスタッフが責任をもってカットを施します。<br>
+            カット料金のみ無料とさせていただきます。<br>
+            ​これからもご協力よろしくお願いいたします。
+          </p>
+        </div>
+        <div class="donation reveal">
+          ※2021/7/1よりカットされた髪の毛は個人での発送となっておりますので、ご理解とご協力のほどよろしくお願いいたします。
+        </div>
+      </section>
+
+      <section>
+        <h2 class="title reveal-back">多くの方にご協力いただいております</h2>
+        <div class="donation-imgs reveal">
+          <div class="donation-img">
+            <div class="donation-img-left">
+              <img
+                src="https://img.beauty-navi.com/images/style/2021/04/14/b631282a28a74fe2d325eae3984a56e6/410x556/64ed5de91d4b9d075aa3469a1c5b4a1c.jpg"
+                title="カット前の画像">
+              <div class="donation-title">Before</div>
             </div>
-            <div class="donation reveal">
-                ※7月1日よりカットされた髪の毛は個人での発送となっておりますので、ご理解とご協力のほどよろしくお願いいたします。
+            <div class="donation-img-right">
+              <img
+                src="https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexpub%252Ffeed%252FBeautyNaviNews%252F2021%252FBeautyNaviNews_beautynavi6481%252FBeautyNaviNews_beautynavi6481_2204c5b1a85f8ce77bcf_1.jpg,small=600,quality=80,type=jpg"
+                title="カット後の画像">
+              <div class="donation-title">Aftter</div>
             </div>
-        </section>
-            
-        <section>
-            <h2 class="title reveal-back">多くの方にご協力いただいております</h2>
-            <div class="donation-imgs reveal">
-                <div class="donation-img">
-                    <div class="donation-img-left">
-                        <img src="https://img.beauty-navi.com/images/style/2021/04/14/b631282a28a74fe2d325eae3984a56e6/410x556/64ed5de91d4b9d075aa3469a1c5b4a1c.jpg" title="カット前の画像">
-                        <div class="donation-title">Before</div>
-                    </div>
-                    <div class="donation-img-right">
-                        <img src="https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexpub%252Ffeed%252FBeautyNaviNews%252F2021%252FBeautyNaviNews_beautynavi6481%252FBeautyNaviNews_beautynavi6481_2204c5b1a85f8ce77bcf_1.jpg,small=600,quality=80,type=jpg" title="カット後の画像">
-                        <div class="donation-title">Aftter</div>
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="donation-imgs reveal">
+          <div class="donation-img">
+            <div class="donation-img-left">
+              <img
+                src="https://img.beauty-navi.com/images/style/2021/04/14/b631282a28a74fe2d325eae3984a56e6/410x556/64ed5de91d4b9d075aa3469a1c5b4a1c.jpg"
+                title="カット前の画像">
+              <div class="donation-title">Before</div>
             </div>
-            <div class="donation-imgs reveal">
-                <div class="donation-img">
-                    <div class="donation-img-left">
-                        <img src="https://img.beauty-navi.com/images/style/2021/04/14/b631282a28a74fe2d325eae3984a56e6/410x556/64ed5de91d4b9d075aa3469a1c5b4a1c.jpg" title="カット前の画像">
-                        <div class="donation-title">Before</div>
-                    </div>
-                    <div class="donation-img-right">
-                        <img src="https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexpub%252Ffeed%252FBeautyNaviNews%252F2021%252FBeautyNaviNews_beautynavi6481%252FBeautyNaviNews_beautynavi6481_2204c5b1a85f8ce77bcf_1.jpg,small=600,quality=80,type=jpg" title="カット後の画像">
-                        <div class="donation-title">Aftter</div>
-                    </div>
-                </div>
+            <div class="donation-img-right">
+              <img
+                src="https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexpub%252Ffeed%252FBeautyNaviNews%252F2021%252FBeautyNaviNews_beautynavi6481%252FBeautyNaviNews_beautynavi6481_2204c5b1a85f8ce77bcf_1.jpg,small=600,quality=80,type=jpg"
+                title="カット後の画像">
+              <div class="donation-title">Aftter</div>
             </div>
-            <div class="donation-imgs reveal">
-                <div class="donation-img">
-                    <div class="donation-img-left">
-                        <img src="https://img.beauty-navi.com/images/style/2021/04/14/b631282a28a74fe2d325eae3984a56e6/410x556/64ed5de91d4b9d075aa3469a1c5b4a1c.jpg" title="カット前の画像">
-                        <div class="donation-title">Before</div>
-                    </div>
-                    <div class="donation-img-right">
-                        <img src="https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexpub%252Ffeed%252FBeautyNaviNews%252F2021%252FBeautyNaviNews_beautynavi6481%252FBeautyNaviNews_beautynavi6481_2204c5b1a85f8ce77bcf_1.jpg,small=600,quality=80,type=jpg" title="カット後の画像">
-                        <div class="donation-title">Aftter</div>
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="donation-imgs reveal">
+          <div class="donation-img">
+            <div class="donation-img-left">
+              <img
+                src="https://img.beauty-navi.com/images/style/2021/04/14/b631282a28a74fe2d325eae3984a56e6/410x556/64ed5de91d4b9d075aa3469a1c5b4a1c.jpg"
+                title="カット前の画像">
+              <div class="donation-title">Before</div>
             </div>
-            <div class="donation-imgs reveal">
-                <div class="donation-img">
-                    <div class="donation-img-left">
-                        <img src="https://img.beauty-navi.com/images/style/2021/04/14/b631282a28a74fe2d325eae3984a56e6/410x556/64ed5de91d4b9d075aa3469a1c5b4a1c.jpg" title="カット前の画像">
-                        <div class="donation-title">Before</div>
-                    </div>
-                    <div class="donation-img-right">
-                        <img src="https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexpub%252Ffeed%252FBeautyNaviNews%252F2021%252FBeautyNaviNews_beautynavi6481%252FBeautyNaviNews_beautynavi6481_2204c5b1a85f8ce77bcf_1.jpg,small=600,quality=80,type=jpg" title="カット後の画像">
-                        <div class="donation-title">Aftter</div>
-                    </div>
-                </div>
+            <div class="donation-img-right">
+              <img
+                src="https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexpub%252Ffeed%252FBeautyNaviNews%252F2021%252FBeautyNaviNews_beautynavi6481%252FBeautyNaviNews_beautynavi6481_2204c5b1a85f8ce77bcf_1.jpg,small=600,quality=80,type=jpg"
+                title="カット後の画像">
+              <div class="donation-title">Aftter</div>
             </div>
-        </section>
+          </div>
+        </div>
+        <div class="donation-imgs reveal">
+          <div class="donation-img">
+            <div class="donation-img-left">
+              <img
+                src="https://img.beauty-navi.com/images/style/2021/04/14/b631282a28a74fe2d325eae3984a56e6/410x556/64ed5de91d4b9d075aa3469a1c5b4a1c.jpg"
+                title="カット前の画像">
+              <div class="donation-title">Before</div>
+            </div>
+            <div class="donation-img-right">
+              <img
+                src="https://imgc.eximg.jp/i=https%253A%252F%252Fs.eximg.jp%252Fexpub%252Ffeed%252FBeautyNaviNews%252F2021%252FBeautyNaviNews_beautynavi6481%252FBeautyNaviNews_beautynavi6481_2204c5b1a85f8ce77bcf_1.jpg,small=600,quality=80,type=jpg"
+                title="カット後の画像">
+              <div class="donation-title">Aftter</div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <%- include('footer'); %>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script  src="js/style.js"></script>
-    </body>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://unpkg.com/scrollreveal"></script>
+      <script src="js/style.js"></script>
+</body>
+
 </html>

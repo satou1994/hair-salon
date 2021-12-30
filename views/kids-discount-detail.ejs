@@ -1,52 +1,35 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="utf-8" />
-    <!-- Web表示設定 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="秋田市の美容室「ヘアサロンアキ」の店舗情報です。カット・カラー・パーマだけでなく、ヘアドネーションも取り扱っています" />
-    <!-- アイコンの設定-->
-    <link rel="icon" href="#.ico" />
-    <link rel="apple-touch-icon" href="#.png" />
-    <!-- プラグイン -->
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital@1&family=Barlow:wght@200&display=swap" rel="stylesheet">
-    <!-- css -->
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/kids-discount-detail.css">
-    
-    <title>kids-discount-detail:hair-salon-aki</title>
+  <%- include('head'); %> 
+  <link rel="stylesheet" href="/css/kids-discount-detail.css"> 
+  <title>kids-discount-detail:hair-salon-aki</title>
 </head>
 <body>
   <%- include('header'); %> 
     
-    <main>
-        <div class="top">
-          <div class="top-img"><img src="https://illust8.com/wp-content/uploads/2021/05/family_banzai_13410.png" alt="親御様ページのトップ画像"></div>
-          <h1 class="top-title">０～６歳のお子様をお持ちの親御様</h1>
-        </div>
+  <main>
+    <div class="top">
+      <div class="top-img"><img src="https://illust8.com/wp-content/uploads/2021/05/family_banzai_13410.png" alt="親御様ページのトップ画像"></div>
+      <h1 class="top-title">０～６歳のお子様をお持ちの親御様</h1>
+    </div>
 
-        <div class="comments">
-            <p class="comment">
-                今日本は、少子高齢化社会と言われており、秋田県は特に高齢化が進み、約3人に1人が高齢者と言われています。秋田県の出生率も全国で最も低いです。ですが全く子供が生まれていないわけではありません。<br>
-                　子供を出産した多くの女性は、考え方も生き方も一女性から母親になります。頼もしいとも呼べるほど、自分を犠牲にしてでも子供のために生きる女性の方々を見ると女性としての強さを感じます。<br>
-                ですが自分を棚に置きすぎてしまい、育児に奮闘する女性の方々はどこか自分のケアをおろそかにしてしまっているような気がします。育児にかかるお金を考えますと、やはり自分を犠牲にせざるをえないのかもしれません。<br>
-                ですがそうなってしまいますと、美意識がなくなり、女性らしさが失われていってしまいます。<br>
-                　そこで美容師として、何か日々育児に奮闘する女性の方々・親御様に向けて何かできることはないかと考えました。<br>
-                私の願いは小さいお子様がいるご家庭でも自身の美への意識を捨てないでほしい。母親はいつまでもキレイに、父親はいつまでもかっこよくいてほしいということです。自分に自信を持つきっかけは人それぞれ違いますが、ヘアやメイクも大きな要素になりうると考えております。<br>
-                そこで親御様とそのご家族に向けて割引を実施し、金銭面で工面し、少しでも育児に協力させていただきたいと思っております。<br>
-                ​　0～6歳のお子様がいるご家庭は全員料金を40％offとさせていただきます。<br>
-                　親になる前と同じように、むしろそれ以上に自分へ気を遣い、容姿を整えることで生活が良循環すること、ご家族全員が笑顔になることを心から願っております。
-                <span class="name">店長　　菅原　晃</span>
-            </p>
-            <div class="comment">◎初回のみご予約の際、お子様の名前・年齢・性別を確認させていただます。</div>
-        </div>
-
-    </main>
+    <div class="comments">
+      <p class="comment">
+        今日本は、少子高齢化社会と言われておりますが、全く子供が生まれていないわけではありません。<br>
+        　子供を出産した多くの女性は、考え方も生き方も一女性から母親になります。頼もしいとも呼べるほど、自分を犠牲にしてでも子供のために生きる女性の方々を見ると女性としての強さを感じます。<br>
+        ですが自分を棚に置きすぎてしまい、育児に奮闘する女性の方々はどこか自分のケアをおろそかにしてしまっているような気がします。育児にかかるお金を考えますと、やはり自分を犠牲にせざるをえないのかもしれません。<br>
+        ですがそうなってしまいますと、美意識がなくなり、女性らしさが失われていってしまいます。<br>
+        　そこで美容師として、何か日々育児に奮闘する女性の方々・親御様に向けて何かできることはないかと考えました。<br>
+        私の願いは小さいお子様がいるご家庭でも自身の美への意識を捨てないでほしい。母親はいつまでもキレイに、父親はいつまでもかっこよくいてほしいということです。自分に自信を持つきっかけは人それぞれ違いますが、ヘアやメイクも大きな要素になりうると考えております。<br>
+        そこで親御様とそのご家族に向けて割引を実施し、金銭面で工面し、少しでも育児に協力させていただきたいと思っております。<br>
+        ​　0～6歳のお子様がいるご家庭は全員料金を40％offとさせていただきます。<br>
+        　親になる前と同じように、むしろそれ以上に自分へ気を遣い、容姿を整えることで生活が良循環すること、ご家族全員が笑顔になることを心から願っております。
+        <span class="name">店長　　ハチ公</span>
+      </p>
+      <div class="comment">◎初回のみご予約の際、お子様の名前・年齢・性別を確認させていただます。</div>
+  </div>
+  </main>
 
     <%- include('footer'); %> 
 

@@ -1,25 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <!-- Web表示設定 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="秋田市の美容室「ヘアサロンアキ」の店舗情報です。カット・カラー・パーマだけでなく、ヘアドネーションも取り扱っています" />
-  <!-- アイコンの設定-->
-  <link rel="icon" href="#.ico" />
-  <link rel="apple-touch-icon" href="#.png" />
-  <!-- プラグイン -->
-  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital@1&family=Barlow:wght@200&display=swap" rel="stylesheet">
-  <!-- css -->
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/common.css">
+  <%- include('head'); %> 
   <link rel="stylesheet" href="/css/news.css">
-  
-  <title>news:hair-salon-aki</title>
+  <title>news:hair-salon</title>
 </head>
 <body>
   <%- include('header'); %> 
@@ -35,7 +19,9 @@
         <div class="news-contents">
           <%- item.comment %>
         </div>
-        <%- item.image %> 
+        <% if(item.image){ %> 
+          <img src="<%- item.image %>"> 
+        <% } %> 
       </article>
     <% }); %>
   </main>
